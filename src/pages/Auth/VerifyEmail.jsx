@@ -1,143 +1,36 @@
-// import { Button, Checkbox, Input } from "antd";
-// import Form from "antd/es/form/Form";
-// import React, { useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
-// import image from "../../assets/images/verify.png";
-// import PageHeading from "../../Components/PageHeading";
-// import OTPInput from "react-otp-input";
-// import Swal from "sweetalert2";
-// // import { useVerifyEmailMutation } from "../../redux/features/Auth/authApi";
+// import React from 'react'
 
-// const VerifyEmail = () => {
-//   const navigate = useNavigate();
-//   const { id } = useParams();
-//   const [otp, setOtp] = useState("");
-//   // const [mutation, { isLoading }] = useVerifyEmailMutation();
-//   const onFinish = async (values) => {
-//     if (isNaN(otp) || otp.length < 4) {
-//       return Swal.fire({
-//         icon: "error",
-//         title: "Failed",
-//         text: "Please enter 4 digits OTP number!!.",
-//       });
-//     }
-//     navigate(`/auth/reset-password`);
-//     // try {
-//     //   const response = await mutation({
-//     //     email: id,
-//     //     code: Number(otp),
-//     //   });
-//     //   // console.log(response);
-//     //   if (response?.data?.statusCode == 200) {
-//     //     localStorage.setItem("verify-token", response?.data?.data);
-//     //     navigate(`/auth/reset-password`);
-//     //   } else {
-//     //     Swal.fire({
-//     //       icon: "error",
-//     //       title: "failed!",
-//     //       text:
-//     //         response?.data?.message ||
-//     //         response?.error?.data?.message ||
-//     //         "Something went wrong. Please try again later.",
-//     //     });
-//     //   }
-//     // } catch (error) {
-//     //   Swal.fire({
-//     //     icon: "error",
-//     //     // title: "Login Failed , Try Again...",
-//     //     text: "Something went wrong. Please try again later.",
-//     //   });
-//     // }
-//   };
+// export default function VerifyEmail() {
 //   return (
-//     <div className="min-h-[92vh] w-full grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-1 lg:gap-8">
-//       <div className="lg:border-r-2 border-primary mx-auto w-[90%] lg:p-[8%]">
-//         <img src={image} alt="" />
-//       </div>
-//       <div className="lg:p-[5%] order-first lg:order-last">
-//         <div className="w-full py-[64px] lg:px-[44px] space-y-5">
-//           <div className="flex flex-col items-center lg:items-start">
-//             <PageHeading
-//               backPath={"/auth/forgot-password"}
-//               title={"Verify Email"}
-//               disbaledBackBtn={true}
-//             />
-//             <p className=" drop-shadow text-hash mt-5 text-center lg:text-left">
-//               Please check your email. We have sent a code to contact @gmail.com
-//             </p>
-//           </div>
-//           <Form
-//             name="normal_login"
-//             layout="vertical"
-//             initialValues={{
-//               remember: true,
-//             }}
-//             onFinish={onFinish}
-//           >
-//             <div className="py-3 text-2xl font-semibold flex justify-center">
-//               <OTPInput
-//                 value={otp}
-//                 onChange={setOtp}
-//                 numInputs={4}
-//                 inputStyle={{
-//                   height: "70px",
-//                   width: "70px",
-//                   margin: "20px",
-//                   // background: "#ECE8F1",
-//                   border: "1px solid #61D0FF",
-//                   // marginRight: "auto",
-//                   outline: "none",
-//                   borderRadius: "16px",
-//                   color: "black",
-//                 }}
-//                 renderSeparator={<span> </span>}
-//                 renderInput={(props) => <input {...props} />}
-//               />
-//             </div>
-//             <div className="w-full flex justify-center pt-5">
-//                 <Button
-//                   // disabled={isLoading}
-//                   type="primary"
-//                   size="large"
-//                   htmlType="submit"
-//                   className="w-full px-2 "
-//                 >
-//                   Verify Email
-//                 </Button>
-//             </div>
-//           </Form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VerifyEmail;
+//     <div>VerifyEmail</div>
+//   )
+// }
 
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function VerifyEmail() {
-  const [otp, setOtp] = useState(Array(6).fill(""));
-  const inputRefs = useRef([]);
   const navigate = useNavigate();
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const inputRefs = useRef([]);
 
-  useEffect(() => {
-    inputRefs.current = inputRefs.current.slice(0, 6);
-  }, []);
+  
+  const handleOtpChange = (index, value) => {
+    // Only allow single digit
+    if (value.length > 1) return;
 
-  const handleChange = (index, value) => {
-    if (!/^\d*$/.test(value)) return;
     const newOtp = [...otp];
-    newOtp[index] = value.substring(0, 1);
+    newOtp[index] = value;
     setOtp(newOtp);
 
+    // Auto-focus next input
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
   };
 
   const handleKeyDown = (index, e) => {
+    // Handle backspace
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
@@ -145,84 +38,108 @@ export default function VerifyEmail() {
 
   const handlePaste = (e) => {
     e.preventDefault();
-    const pastedData = e.clipboardData.getData("text");
-    if (!/^\d+$/.test(pastedData)) return;
-
-    const digits = pastedData.substring(0, 6).split("");
+    const pastedData = e.clipboardData.getData("text").slice(0, 6);
     const newOtp = [...otp];
 
-    digits.forEach((digit, index) => {
-      if (index < 6) newOtp[index] = digit;
-    });
+    for (let i = 0; i < pastedData.length && i < 6; i++) {
+      if (/^\d$/.test(pastedData[i])) {
+        newOtp[i] = pastedData[i];
+      }
+    }
 
     setOtp(newOtp);
 
-    const lastFilledIndex = Math.min(digits.length - 1, 5);
-    if (lastFilledIndex < 5) {
-      inputRefs.current[lastFilledIndex + 1]?.focus();
-    } else {
-      inputRefs.current[5]?.focus();
-    }
+    // Focus the next empty input or the last input
+    const nextEmptyIndex = newOtp.findIndex((digit) => digit === "");
+    const focusIndex = nextEmptyIndex === -1 ? 5 : nextEmptyIndex;
+    inputRefs.current[focusIndex]?.focus();
   };
 
   const handleVerify = () => {
-    const otpValue = otp.join("");
-    if (otpValue.length === 6) {
-      alert(`Verifying OTP: ${otpValue}`);
-      navigate("/auth/reset-password")
+    const otpCode = otp.join("");
+    console.log("Verify clicked", otpCode);
+
+    if (otpCode.length === 6) {
+      // Add verification logic here
+      console.log("OTP is complete:", otpCode);
+      navigate('/auth/reset-password')
     } else {
-      alert("Please enter all 6 digits of the OTP");
+      console.log("Please enter complete OTP");
     }
   };
 
+  const isOtpComplete = otp.every((digit) => digit !== "");
+
+  useEffect(() => {
+    // Focus first input on mount
+    inputRefs.current[0]?.focus();
+  }, []);
+
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-white">
-      {/* Logo Section */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-white p-8">
-        <div className="w-48 h-48 md:w-64 md:h-64">
-          <img src="/Vector (2).png" alt="Logo" width={240} height={240} />
-        </div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/auth.png')",
+        }}
+      >
+        {/* Concert venue background with blue/teal lighting and crowd */}
       </div>
 
-      {/* Verification Form Section */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-[#FFF0F0] p-4">
-        <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-sm">
-          <div className="mb-6 flex items-center justify-center">
-       
-            <h1 className="text-[30px] font-bold">Verify Email</h1>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+        <div className="w-full max-w-md">
+          {/* Verify Email Form */}
+          <div className="bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+            {/* Header */}
+            <div className="flex items-center justify-center mb-8">
+              <h1 className="text-white text-[36px] font-semibold">
+                Verify Email
+              </h1>
+            </div>
 
-          <div className="mb-6">
-            <div className="flex justify-center space-x-2 md:space-x-4">
-              {[0, 1, 2, 3, 4, 5].map((index) => (
-                <div key={index} className="w-10 h-10 md:w-12 md:h-12">
+            {/* OTP Input Fields */}
+            <div className="mb-8">
+              <div className="flex justify-center gap-3 mb-6">
+                {otp.map((digit, index) => (
                   <input
+                    key={index}
                     ref={(el) => (inputRefs.current[index] = el)}
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     maxLength={1}
-                    value={otp[index]}
-                    onChange={(e) => handleChange(index, e.target.value)}
+                    value={digit}
+                    onChange={(e) => handleOtpChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
-                    onPaste={index === 0 ? handlePaste : undefined}
-                    className={`w-full h-full text-center text-lg font-semibold border ${
-                      otp[index] ? "border-gray-400" : "border-gray-300"
-                    } rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent`}
+                    onPaste={handlePaste}
+                    className="w-12 h-12 bg-white text-black text-center text-xl font-semibold rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
                   />
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Verify Button */}
+              <button
+                onClick={handleVerify}
+                disabled={!isOtpComplete}
+                className={`w-full font-semibold py-4 rounded-full transition-all transform hover:scale-[1.02] shadow-lg ${
+                  isOtpComplete
+                    ? "bg-[#534590] hover:from-purple-700 hover:to-purple-800 text-white"
+                    : "bg-gray-600 text-gray-400 cursor-not-allowed"
+                }`}
+              >
+                Verify
+              </button>
+            </div>
+
+            {/* Description Text */}
+            <div className="text-center">
+              <p className="text-gray-400 text-sm">
+                Please enter the OTP we have sent you in your email.
+              </p>
             </div>
           </div>
-
-          <button
-            onClick={handleVerify}
-            className="w-full py-3 bg-[#E73E1E] hover:bg-red-600 text-white font-semibold rounded-full transition duration-200"
-          >
-            Verify
-          </button>
-
-          <p className="text-sm text-gray-500 text-center mt-4">
-            Please enter the OTP we have sent you in your email.
-          </p>
         </div>
       </div>
     </div>
