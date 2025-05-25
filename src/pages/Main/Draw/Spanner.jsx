@@ -295,30 +295,108 @@
 //   )
 // }
 
-
 // import { useState, useRef, useEffect } from "react";
 // import { Settings, Trophy, X } from "lucide-react";
 // import { SpinWheel as SpinWheelGame } from "spin-wheel-game";
 
 // const segments = [
-//   { segmentText: "10FDH40J6", image:'/user2.png', name: "John Doe", segColor: "#534590" },
-//   { segmentText: "10FDH40J6", image:'/user2.png', name: "Smith", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J61", image:'/user2.png', name: "Harry", segColor: "#534590" },
-//   { segmentText: "10FDH40J62", image:'/user2.png', name: "Doe", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J3",  image:'/user2.png', name: "John", segColor: "#534590" },
-//   { segmentText: "10FDH40J4", image:'/user2.png', name: "david", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J5",  image:'/user2.png', name: "messi", segColor: "#534590" },
-//   { segmentText: "10FDH40J6", image:'/user2.png', name: "ronaldo", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J7",  image:'/user2.png', name: "cr7", segColor: "#534590" },
-//   { segmentText: "10FDH40J8", image:'/user2.png', name: "neymar", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J9", image:'/user2.png', name: "kane", segColor: "#534590" },
-//   { segmentText: "10FDH40J10",  image:'/user2.png', name: "lukaku", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J1",  image:'/user2.png', name: "degea", segColor: "#534590" },
-//   { segmentText: "10FDH40J13", image:'/user2.png', name: "lampo", segColor: "#6B5B95" },
-//   { segmentText: "10FDH40J6sd", image:'/user2.png', name: "jamal", segColor: "#534590" },
-//   { segmentText: "10FDH40J6hj", image:'/user2.png', name: "mohamed", segColor: "#6B5B95" },
+//   {
+//     segmentText: "10FDH40J6",
+//     image: "/user2.png",
+//     name: "John Doe",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J6",
+//     image: "/user2.png",
+//     name: "Smith",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J61",
+//     image: "/user2.png",
+//     name: "Harry",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J62",
+//     image: "/user2.png",
+//     name: "Doe",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J3",
+//     image: "/user2.png",
+//     name: "John",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J4",
+//     image: "/user2.png",
+//     name: "david",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J5",
+//     image: "/user2.png",
+//     name: "messi",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J6",
+//     image: "/user2.png",
+//     name: "ronaldo",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J7",
+//     image: "/user2.png",
+//     name: "cr7",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J8",
+//     image: "/user2.png",
+//     name: "neymar",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J9",
+//     image: "/user2.png",
+//     name: "kane",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J10",
+//     image: "/user2.png",
+//     name: "lukaku",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J1",
+//     image: "/user2.png",
+//     name: "degea",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J13",
+//     image: "/user2.png",
+//     name: "lampo",
+//     segColor: "#6B5B95",
+//   },
+//   {
+//     segmentText: "10FDH40J6sd",
+//     image: "/user2.png",
+//     name: "jamal",
+//     segColor: "#534590",
+//   },
+//   {
+//     segmentText: "10FDH40J6hj",
+//     image: "/user2.png",
+//     name: "mohamed",
+//     segColor: "#6B5B95",
+//   },
 // ];
-
 
 // const spinCounts = [5, 10, 15, 20, 25];
 
@@ -399,7 +477,7 @@
 //   }, []);
 
 //   const playSpinSound = () => {
-//     if ( spinSoundRef.current) {
+//     if (spinSoundRef.current) {
 //       try {
 //         spinSoundRef.current.play();
 //       } catch (error) {
@@ -409,7 +487,7 @@
 //   };
 
 //   const playWinSound = () => {
-//     if (  winSoundRef.current) {
+//     if (winSoundRef.current) {
 //       try {
 //         winSoundRef.current.play();
 //       } catch (error) {
@@ -443,8 +521,6 @@
 //     setShowWinnerModal(false);
 //     setWinner(null);
 //   };
-
-  
 
 //   const spinWheelProps = {
 //     // segments,
@@ -491,7 +567,7 @@
 //         {/* Header */}
 //         <div className="text-center">
 //           <h1 className="text-2xl md:text-[36px] font-semibold mb-6">
-//            How many times do you want to spin?
+//             How many times do you want to spin?
 //           </h1>
 
 //           {/* Spin Count Buttons */}
@@ -509,7 +585,7 @@
 //                 {count} Spin
 //               </button>
 //             ))}
-            
+
 //             <button className="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
 //               <Settings className="w-5 h-5" />
 //             </button>
@@ -568,171 +644,396 @@
 
 //       {/* Winner Modal */}
 //       {showWinnerModal && winner && (
-//         // <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-//         //   <div className="bg-white text-gray-900 rounded-2xl p-8 max-w-md w-full text-center relative ">
-//         //     <button
-//         //       onClick={closeWinnerModal}
-//         //       className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-//         //     >
-//         //       <X className="w-6 h-6" />
-//         //     </button>
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+//           <div className="bg-white text-gray-900 rounded-2xl p-8 max-w-md w-full text-center relative ">
+//             <button
+//               onClick={closeWinnerModal}
+//               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+//             >
+//               <X className="w-6 h-6" />
+//             </button>
 
-//         //     <div className="mb-6">
-//         //       <div className="w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-//         //         <Trophy className="w-10 h-10 text-white" />
-//         //       </div>
-//         //       <h2 className="text-3xl font-bold text-purple-600 mb-2">
-//         //         🎉 Congratulations! 🎉
-//         //       </h2>
-//         //       <p className="text-gray-600 mb-4">You won:</p>
-//         //       <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-2 border-purple-300 rounded-lg p-4 shadow-lg">
-//         //         <p className="text-2xl font-bold text-purple-700">{winner}</p>
-//         //       </div>
-//         //     </div>
-
-//         //     <div className="space-y-3">
-//         //       <button
-//         //         onClick={closeWinnerModal}
-//         //         className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105"
-//         //       >
-//         //         Continue Playing
-//         //       </button>
-//         //       <p className="text-sm text-gray-500">
-//         //         Spins remaining: {remainingSpins}
-//         //       </p>
-//         //     </div>
-//         //   </div>
-//         // </div>
-//          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-//       <div className="relative bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4 overflow-hidden">
-//         {/* Background confetti pattern */}
-//         <div className="absolute inset-0 opacity-20">
-//           <div className="absolute top-4 left-8 w-8 h-12 bg-yellow-400 transform rotate-45 rounded-sm"></div>
-//           <div className="absolute top-12 right-12 w-6 h-10 bg-yellow-500 transform -rotate-12 rounded-sm"></div>
-//           <div className="absolute top-20 left-4 w-4 h-8 bg-yellow-300 transform rotate-75 rounded-sm"></div>
-//           <div className="absolute bottom-16 right-8 w-6 h-10 bg-yellow-400 transform rotate-12 rounded-sm"></div>
-//           <div className="absolute bottom-8 left-12 w-5 h-8 bg-yellow-500 transform -rotate-45 rounded-sm"></div>
-//           <div className="absolute top-32 right-4 w-4 h-6 bg-yellow-300 transform rotate-90 rounded-sm"></div>
-//           <div className="absolute bottom-32 left-8 w-3 h-6 bg-yellow-400 transform -rotate-30 rounded-sm"></div>
-//         </div>
-
-//         {/* Close button */}
-//         <button className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors">
-//           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//           </svg>
-//         </button>
-
-//         {/* Content */}
-//         <div className="relative z-10 text-center">
-//           {/* Main heading */}
-//           <h1 className="text-white text-3xl font-bold mb-4">Giveway 5 Winner</h1>
-
-//           {/* Congratulations text */}
-//           <div className="mb-2">
-//             <span className="text-2xl">🎉</span>
-//             <span className="text-white text-lg font-semibold mx-2">Congratulations!</span>
-//             <span className="text-2xl">🎉</span>
-//           </div>
-
-//           {/* Subtitle */}
-//           <p className="text-gray-300 text-sm mb-8 leading-relaxed">
-//             You've Been Selected As The Winner Of Our
-//             <br />
-//             Ticket Giveaway! 🤩
-//           </p>
-
-//           {/* Winners grid */}
-//           <div className="space-y-6">
-//             {/* Top row - 3 winners */}
-//             <div className="flex justify-center space-x-8">
-//               {/* Winner 1 */}
-//               <div className="text-center">
-//                 <div className="w-12 h-12 rounded-full bg-blue-500 mb-2 mx-auto overflow-hidden">
-//                   <img
-//                     src="/placeholder.svg?height=48&width=48"
-//                     alt="Winner profile"
-//                     className="w-full h-full object-cover"
-//                   />
-//                 </div>
-//                 <p className="text-white text-xs font-medium">Arjun Mazumder</p>
-//                 <p className="text-gray-400 text-xs">Ticket : 0FD45JS</p>
+//             <div className="mb-6">
+//               <div className="w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+//                 <Trophy className="w-10 h-10 text-white" />
 //               </div>
-
-//               {/* Winner 2 */}
-//               <div className="text-center">
-//                 <div className="w-12 h-12 rounded-full bg-gray-600 mb-2 mx-auto overflow-hidden">
-//                   <img
-//                     src="/placeholder.svg?height=48&width=48"
-//                     alt="Winner profile"
-//                     className="w-full h-full object-cover"
-//                   />
-//                 </div>
-//                 <p className="text-white text-xs font-medium">Arjun Mazumder</p>
-//                 <p className="text-gray-400 text-xs">Ticket : 0FD45JS</p>
-//               </div>
-
-//               {/* Winner 3 */}
-//               <div className="text-center">
-//                 <div className="w-12 h-12 rounded-full bg-orange-500 mb-2 mx-auto overflow-hidden">
-//                   <img
-//                     src="/placeholder.svg?height=48&width=48"
-//                     alt="Winner profile"
-//                     className="w-full h-full object-cover"
-//                   />
-//                 </div>
-//                 <p className="text-white text-xs font-medium">Arjun Mazumder</p>
-//                 <p className="text-gray-400 text-xs">Ticket : 0FD45JS</p>
+//               <h2 className="text-3xl font-bold text-purple-600 mb-2">
+//                 🎉 Congratulations! 🎉
+//               </h2>
+//               <p className="text-gray-600 mb-4">You won:</p>
+//               <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-2 border-purple-300 rounded-lg p-4 shadow-lg">
+//                 <p className="text-2xl font-bold text-purple-700">{winner}</p>
 //               </div>
 //             </div>
 
-//             {/* Bottom row - 2 winners */}
-//             <div className="flex justify-center space-x-16">
-//               {/* Winner 4 */}
-//               <div className="text-center">
-//                 <div className="w-12 h-12 rounded-full bg-teal-500 mb-2 mx-auto overflow-hidden">
-//                   <img
-//                     src="/placeholder.svg?height=48&width=48"
-//                     alt="Winner profile"
-//                     className="w-full h-full object-cover"
-//                   />
-//                 </div>
-//                 <p className="text-white text-xs font-medium">Arjun Mazumder</p>
-//                 <p className="text-gray-400 text-xs">Ticket : 0FD45JS</p>
-//               </div>
-
-//               {/* Winner 5 - with strike through */}
-//               <div className="text-center relative">
-//                 <div className="w-12 h-12 rounded-full bg-orange-400 mb-2 mx-auto overflow-hidden">
-//                   <img
-//                     src="/placeholder.svg?height=48&width=48"
-//                     alt="Winner profile"
-//                     className="w-full h-full object-cover"
-//                   />
-//                 </div>
-//                 <p className="text-white text-xs font-medium">Arjun Mazumder</p>
-//                 <p className="text-gray-400 text-xs">Ticket : 0FD45JS</p>
-
-//                 {/* Red strike line */}
-//                 <div className="absolute inset-0 flex items-center justify-center">
-//                   <div className="w-20 h-0.5 bg-red-500 transform rotate-12"></div>
-//                 </div>
-//               </div>
+//             <div className="space-y-3">
+//               <button
+//                 onClick={closeWinnerModal}
+//                 className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105"
+//               >
+//                 Continue Playing
+//               </button>
+//               <p className="text-sm text-gray-500">
+//                 Spins remaining: {remainingSpins}
+//               </p>
 //             </div>
 //           </div>
 //         </div>
-//       </div>
-//     </div>
 //       )}
 //     </div>
 //   );
 // }
 
-"use client"
 
-import { useState, useRef, useEffect } from "react"
-import { Settings, X } from "lucide-react"
-import { SpinWheel as SpinWheelGame } from "spin-wheel-game"
+
+// import { useState, useRef, useEffect } from "react"
+// import { Settings, X } from "lucide-react"
+// import { SpinWheel as SpinWheelGame } from "spin-wheel-game"
+
+// const segments = [
+//   { segmentText: "10FDH40J6", image: "/user2.png", name: "John Doe", segColor: "#534590" },
+//   { segmentText: "10FDH40J6", image: "/user2.png", name: "Smith", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J61", image: "/user2.png", name: "Harry", segColor: "#534590" },
+//   { segmentText: "10FDH40J62", image: "/user2.png", name: "Doe", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J3", image: "/user2.png", name: "John", segColor: "#534590" },
+//   { segmentText: "10FDH40J4", image: "/user2.png", name: "david", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J5", image: "/user2.png", name: "messi", segColor: "#534590" },
+//   { segmentText: "10FDH40J6", image: "/user2.png", name: "ronaldo", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J7", image: "/user2.png", name: "cr7", segColor: "#534590" },
+//   { segmentText: "10FDH40J8", image: "/user2.png", name: "neymar", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J9", image: "/user2.png", name: "kane", segColor: "#534590" },
+//   { segmentText: "10FDH40J10", image: "/user2.png", name: "lukaku", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J1", image: "/user2.png", name: "degea", segColor: "#534590" },
+//   { segmentText: "10FDH40J13", image: "/user2.png", name: "lampo", segColor: "#6B5B95" },
+//   { segmentText: "10FDH40J6sd", image: "/user2.png", name: "jamal", segColor: "#534590" },
+//   { segmentText: "10FDH40J6hj", image: "/user2.png", name: "mohamed", segColor: "#6B5B95" },
+// ]
+
+// const spinCounts = [5, 10, 15, 20, 25]
+
+// export default function SpinWheel() {
+//   const [isSpinning, setIsSpinning] = useState(false)
+//   const [selectedSpinCount, setSelectedSpinCount] = useState(10)
+//   const [remainingSpins, setRemainingSpins] = useState(10)
+//   const [winner, setWinner] = useState(null)
+//   const [showWinnerModal, setShowWinnerModal] = useState(false)
+//   const [spinHistory, setSpinHistory] = useState([])
+//   const [isClient, setIsClient] = useState(false)
+
+//   const spinSoundRef = useRef(null)
+//   const winSoundRef = useRef(null)
+
+//   useEffect(() => {
+//     setIsClient(true)
+
+//     // Create audio elements
+//     if (typeof window !== "undefined") {
+//       // Spin sound (using a simple tone generator)
+//       const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+
+//       const createSpinSound = () => {
+//         const oscillator = audioContext.createOscillator()
+//         const gainNode = audioContext.createGain()
+
+//         oscillator.connect(gainNode)
+//         gainNode.connect(audioContext.destination)
+
+//         oscillator.frequency.setValueAtTime(200, audioContext.currentTime)
+//         oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 2)
+
+//         gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2)
+
+//         oscillator.start(audioContext.currentTime)
+//         oscillator.stop(audioContext.currentTime + 2)
+//       }
+
+//       const createWinSound = () => {
+//         const oscillator = audioContext.createOscillator()
+//         const gainNode = audioContext.createGain()
+
+//         oscillator.connect(gainNode)
+//         gainNode.connect(audioContext.destination)
+
+//         oscillator.frequency.setValueAtTime(523, audioContext.currentTime) // C5
+//         oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.2) // E5
+//         oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.4) // G5
+
+//         gainNode.gain.setValueAtTime(0.2, audioContext.currentTime)
+//         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.6)
+
+//         oscillator.start(audioContext.currentTime)
+//         oscillator.stop(audioContext.currentTime + 0.6)
+//       }
+
+//       spinSoundRef.current = { play: createSpinSound }
+//       winSoundRef.current = { play: createWinSound }
+//     }
+//   }, [])
+
+//   const playSpinSound = () => {
+//     if (spinSoundRef.current) {
+//       try {
+//         spinSoundRef.current.play()
+//       } catch (error) {
+//         console.log("Could not play spin sound:", error)
+//       }
+//     }
+//   }
+
+//   const playWinSound = () => {
+//     if (winSoundRef.current) {
+//       try {
+//         winSoundRef.current.play()
+//       } catch (error) {
+//         console.log("Could not play win sound:", error)
+//       }
+//     }
+//   }
+
+//   const handleSpinFinish = (result) => {
+//     // Find the winner data from segments
+//     const winnerData = segments.find((segment) => segment.segmentText === result)
+//     setWinner(winnerData || { segmentText: result, name: "Unknown", image: "/user2.png" })
+//     setSpinHistory((prev) => [...prev, result])
+//     setRemainingSpins((prev) => prev - 1)
+//     setShowWinnerModal(true)
+//     setIsSpinning(false)
+//     playWinSound()
+//   }
+
+//   const handleSpinStart = () => {
+//     if (remainingSpins <= 0) return
+//     setIsSpinning(true)
+//     playSpinSound()
+//   }
+
+//   const resetSpins = (count) => {
+//     setSelectedSpinCount(count)
+//     setRemainingSpins(count)
+//     setSpinHistory([])
+//   }
+
+//   const closeWinnerModal = () => {
+//     setShowWinnerModal(false)
+//     setWinner(null)
+//   }
+
+//   // Get recent winners for the modal display
+//   const getRecentWinners = () => {
+//     const recentSpins = spinHistory.slice(-5)
+//     return recentSpins.map((spin) => {
+//       const winnerData = segments.find((segment) => segment.segmentText === spin)
+//       return winnerData || { segmentText: spin, name: "Unknown", image: "/user2.png" }
+//     })
+//   }
+
+//   const spinWheelProps = {
+//     segments,
+//     onFinished: handleSpinFinish,
+//     primaryColor: "black",
+//     contrastColor: "white",
+//     buttonText: "Spin",
+//     textColor: "red",
+//     isOnlyOnce: false,
+//     size: 290,
+//     upDuration: 100,
+//     downDuration: 2000,
+//     fontFamily: "Arial",
+//     arrowLocation: "top",
+//     showTextOnSpin: true,
+//     isSpinSound: true,
+//   }
+
+//   if (!isClient) {
+//     return (
+//       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+//         <div className="text-xl">Loading...</div>
+//       </div>
+//     )
+//   }
+
+//   return (
+//     <div className="min-h-screen  text-white flex flex-col items-center justify-center p-4">
+//       <div className="max-w-2xl w-full space-y-8">
+//         {/* Header */}
+//         <div className="text-center">
+//           <h1 className="text-2xl md:text-[36px] font-semibold mb-6">How many times do you want to spin?</h1>
+
+//           {/* Spin Count Buttons */}
+//           <div className="flex flex-wrap justify-center gap-3 mb-4">
+//             {spinCounts.map((count) => (
+//               <button
+//                 key={count}
+//                 onClick={() => resetSpins(count)}
+//                 className={`px-4 py-2 rounded-full font-medium transition-all ${
+//                   selectedSpinCount === count
+//                     ? "bg-purple-600 text-white"
+//                     : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+//                 }`}
+//               >
+//                 {count} Spin
+//               </button>
+//             ))}
+
+//             <button className="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+//               <Settings className="w-5 h-5" />
+//             </button>
+//           </div>
+
+//           {/* Remaining Spins */}
+//           <p className="text-lg text-gray-300">
+//             Remaining Spins: <span className="font-bold text-purple-400">{remainingSpins}</span>
+//           </p>
+//         </div>
+
+//         {/* Spin Wheel */}
+//         <div className="relative flex justify-center">
+//           <div className="relative">
+//             {/* Custom wrapper to handle spin start */}
+//             <div
+//               onClick={handleSpinStart}
+//               className="cursor-pointer"
+//               style={{
+//                 pointerEvents: remainingSpins <= 0 || isSpinning ? "none" : "auto",
+//               }}
+//             >
+//               <SpinWheelGame {...spinWheelProps} />
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Spin History */}
+//         {spinHistory.length > 0 && (
+//           <div className="text-center">
+//             <h3 className="text-lg font-semibold mb-3">Recent Results</h3>
+//             <div className="flex flex-wrap justify-center gap-2">
+//               {spinHistory.slice(-5).map((result, index) => (
+//                 <span key={index} className="px-3 py-1 bg-purple-600 rounded-full text-sm">
+//                   {result}
+//                 </span>
+//               ))}
+//             </div>
+//           </div>
+//         )}
+//       </div>
+
+//       {/* Giveaway Winner Modal */}
+//       {showWinnerModal && winner && (
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+//           <div className="relative bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4 overflow-hidden">
+//             {/* Background confetti pattern */}
+//             <div className="absolute inset-0 opacity-20">
+//               <div className="absolute top-4 left-8 w-8 h-12 bg-yellow-400 transform rotate-45 rounded-sm"></div>
+//               <div className="absolute top-12 right-12 w-6 h-10 bg-yellow-500 transform -rotate-12 rounded-sm"></div>
+//               <div className="absolute top-20 left-4 w-4 h-8 bg-yellow-300 transform rotate-75 rounded-sm"></div>
+//               <div className="absolute bottom-16 right-8 w-6 h-10 bg-yellow-400 transform rotate-12 rounded-sm"></div>
+//               <div className="absolute bottom-8 left-12 w-5 h-8 bg-yellow-500 transform -rotate-45 rounded-sm"></div>
+//               <div className="absolute top-32 right-4 w-4 h-6 bg-yellow-300 transform rotate-90 rounded-sm"></div>
+//               <div className="absolute bottom-32 left-8 w-3 h-6 bg-yellow-400 transform -rotate-30 rounded-sm"></div>
+//             </div>
+
+//             {/* Close button */}
+//             <button
+//               onClick={closeWinnerModal}
+//               className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+//             >
+//               <X className="w-6 h-6" />
+//             </button>
+
+//             {/* Content */}
+//             <div className="relative z-10 text-center">
+//               {/* Main heading */}
+//               <h1 className="text-white text-3xl font-bold mb-4">Spin Winner!</h1>
+
+//               {/* Congratulations text */}
+//               <div className="mb-2">
+//                 <span className="text-2xl">🎉</span>
+//                 <span className="text-white text-lg font-semibold mx-2">Congratulations!</span>
+//                 <span className="text-2xl">🎉</span>
+//               </div>
+
+//               {/* Current Winner Display */}
+//               <div className="mb-6">
+//                 <div className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 mb-4 mx-auto overflow-hidden flex items-center justify-center">
+//                   <img
+//                     src={winner.image || "/placeholder.svg?height=80&width=80"}
+//                     alt="Winner profile"
+//                     className="w-full h-full object-cover"
+//                   />
+//                 </div>
+//                 <p className="text-white text-xl font-bold mb-1">{winner.name}</p>
+//                 <p className="text-purple-400 text-lg font-semibold">Ticket: {winner.segmentText}</p>
+//               </div>
+
+//               {/* Recent Winners Grid */}
+//               {getRecentWinners().length > 0 && (
+//                 <>
+//                   <p className="text-gray-300 text-sm mb-4">Recent Winners</p>
+//                   <div className="space-y-4">
+//                     {/* Display recent winners in rows */}
+//                     <div className="flex justify-center space-x-6">
+//                       {getRecentWinners()
+//                         .slice(0, 3)
+//                         .map((recentWinner, index) => (
+//                           <div key={index} className="text-center">
+//                             <div className="w-10 h-10 rounded-full bg-purple-600 mb-1 mx-auto overflow-hidden">
+//                               <img
+//                                 src={recentWinner.image || "/placeholder.svg?height=40&width=40"}
+//                                 alt="Recent winner"
+//                                 className="w-full h-full object-cover"
+//                               />
+//                             </div>
+//                             <p className="text-white text-xs font-medium">{recentWinner.name}</p>
+//                             <p className="text-gray-400 text-xs">{recentWinner.segmentText}</p>
+//                           </div>
+//                         ))}
+//                     </div>
+
+//                     {getRecentWinners().length > 3 && (
+//                       <div className="flex justify-center space-x-12">
+//                         {getRecentWinners()
+//                           .slice(3, 5)
+//                           .map((recentWinner, index) => (
+//                             <div key={index + 3} className="text-center">
+//                               <div className="w-10 h-10 rounded-full bg-purple-600 mb-1 mx-auto overflow-hidden">
+//                                 <img
+//                                   src={recentWinner.image || "/placeholder.svg?height=40&width=40"}
+//                                   alt="Recent winner"
+//                                   className="w-full h-full object-cover"
+//                                 />
+//                               </div>
+//                               <p className="text-white text-xs font-medium">{recentWinner.name}</p>
+//                               <p className="text-gray-400 text-xs">{recentWinner.segmentText}</p>
+//                             </div>
+//                           ))}
+//                       </div>
+//                     )}
+//                   </div>
+//                 </>
+//               )}
+
+//               {/* Continue Button */}
+//               <div className="mt-6">
+//                 <button
+//                   onClick={closeWinnerModal}
+//                   className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105"
+//                 >
+//                   Continue Playing
+//                 </button>
+//                 <p className="text-sm text-gray-400 mt-2">Spins remaining: {remainingSpins}</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   )
+// }
+
+import { useState, useRef, useEffect } from "react";
+import { Settings, X } from "lucide-react";
+import { SpinWheel as SpinWheelGame } from "spin-wheel-game";
 
 const segments = [
   { segmentText: "10FDH40J6", image: "/user2.png", name: "John Doe", segColor: "#534590" },
@@ -751,126 +1052,146 @@ const segments = [
   { segmentText: "10FDH40J13", image: "/user2.png", name: "lampo", segColor: "#6B5B95" },
   { segmentText: "10FDH40J6sd", image: "/user2.png", name: "jamal", segColor: "#534590" },
   { segmentText: "10FDH40J6hj", image: "/user2.png", name: "mohamed", segColor: "#6B5B95" },
-]
+];
 
-const spinCounts = [5, 10, 15, 20, 25]
+const spinCounts = [5, 10, 15, 20, 25];
 
 export default function SpinWheel() {
-  const [isSpinning, setIsSpinning] = useState(false)
-  const [selectedSpinCount, setSelectedSpinCount] = useState(10)
-  const [remainingSpins, setRemainingSpins] = useState(10)
-  const [winner, setWinner] = useState(null)
-  const [showWinnerModal, setShowWinnerModal] = useState(false)
-  const [spinHistory, setSpinHistory] = useState([])
-  const [isClient, setIsClient] = useState(false)
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [selectedSpinCount, setSelectedSpinCount] = useState(10);
+  const [remainingSpins, setRemainingSpins] = useState(10);
+  const [winner, setWinner] = useState(null);
+  const [showWinnerModal, setShowWinnerModal] = useState(false);
+  const [spinHistory, setSpinHistory] = useState([]);
+  const [isClient, setIsClient] = useState(false);
 
-  const spinSoundRef = useRef(null)
-  const winSoundRef = useRef(null)
+  const spinSoundRef = useRef(null);
+  const winSoundRef = useRef(null);
 
   useEffect(() => {
-    setIsClient(true)
+    setIsClient(true);
 
-    // Create audio elements
     if (typeof window !== "undefined") {
-      // Spin sound (using a simple tone generator)
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
       const createSpinSound = () => {
-        const oscillator = audioContext.createOscillator()
-        const gainNode = audioContext.createGain()
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
 
-        oscillator.connect(gainNode)
-        gainNode.connect(audioContext.destination)
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
 
-        oscillator.frequency.setValueAtTime(200, audioContext.currentTime)
-        oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 2)
+        oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 2);
 
-        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2)
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2);
 
-        oscillator.start(audioContext.currentTime)
-        oscillator.stop(audioContext.currentTime + 2)
-      }
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 2);
+      };
 
       const createWinSound = () => {
-        const oscillator = audioContext.createOscillator()
-        const gainNode = audioContext.createGain()
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
 
-        oscillator.connect(gainNode)
-        gainNode.connect(audioContext.destination)
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
 
-        oscillator.frequency.setValueAtTime(523, audioContext.currentTime) // C5
-        oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.2) // E5
-        oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.4) // G5
+        oscillator.frequency.setValueAtTime(523, audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.2);
+        oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.4);
 
-        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime)
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.6)
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.6);
 
-        oscillator.start(audioContext.currentTime)
-        oscillator.stop(audioContext.currentTime + 0.6)
-      }
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.6);
+      };
 
-      spinSoundRef.current = { play: createSpinSound }
-      winSoundRef.current = { play: createWinSound }
+      spinSoundRef.current = { play: createSpinSound };
+      winSoundRef.current = { play: createWinSound };
     }
-  }, [])
+  }, []);
 
   const playSpinSound = () => {
     if (spinSoundRef.current) {
       try {
-        spinSoundRef.current.play()
+        spinSoundRef.current.play();
       } catch (error) {
-        console.log("Could not play spin sound:", error)
+        console.log("Could not play spin sound:", error);
       }
     }
-  }
+  };
 
   const playWinSound = () => {
     if (winSoundRef.current) {
       try {
-        winSoundRef.current.play()
+        winSoundRef.current.play();
       } catch (error) {
-        console.log("Could not play win sound:", error)
+        console.log("Could not play win sound:", error);
       }
     }
-  }
+  };
 
   const handleSpinFinish = (result) => {
-    // Find the winner data from segments
-    const winnerData = segments.find((segment) => segment.segmentText === result)
-    setWinner(winnerData || { segmentText: result, name: "Unknown", image: "/user2.png" })
-    setSpinHistory((prev) => [...prev, result])
-    setRemainingSpins((prev) => prev - 1)
-    setShowWinnerModal(true)
-    setIsSpinning(false)
-    playWinSound()
-  }
+    const winnerData = segments.find((segment) => segment.segmentText === result);
+    setWinner(winnerData || { segmentText: result, name: "Unknown", image: "/user2.png" });
+    setSpinHistory((prev) => [...prev, result]);
+    setRemainingSpins((prev) => prev - 1);
+    setShowWinnerModal(true);
+    setIsSpinning(false);
+    playWinSound();
+  };
 
   const handleSpinStart = () => {
-    if (remainingSpins <= 0) return
-    setIsSpinning(true)
-    playSpinSound()
-  }
+    if (remainingSpins <= 0) return;
+    setIsSpinning(true);
+    playSpinSound();
+  };
 
   const resetSpins = (count) => {
-    setSelectedSpinCount(count)
-    setRemainingSpins(count)
-    setSpinHistory([])
-  }
+    setSelectedSpinCount(count);
+    setRemainingSpins(count);
+    setSpinHistory([]);
+  };
 
   const closeWinnerModal = () => {
-    setShowWinnerModal(false)
-    setWinner(null)
-  }
+    setShowWinnerModal(false);
+    setWinner(null);
+  };
 
-  // Get recent winners for the modal display
   const getRecentWinners = () => {
-    const recentSpins = spinHistory.slice(-5)
+    const recentSpins = spinHistory.slice(-5);
     return recentSpins.map((spin) => {
-      const winnerData = segments.find((segment) => segment.segmentText === spin)
-      return winnerData || { segmentText: spin, name: "Unknown", image: "/user2.png" }
-    })
-  }
+      const winnerData = segments.find((segment) => segment.segmentText === spin);
+      return winnerData || { segmentText: spin, name: "Unknown", image: "/user2.png" };
+    });
+  };
+
+  // New function to calculate leaderboard
+  const getLeaderboard = () => {
+    const winnerCounts = {};
+    spinHistory.forEach((spin) => {
+      const winnerData = segments.find((segment) => segment.segmentText === spin);
+      const name = winnerData ? winnerData.name : "Unknown";
+      winnerCounts[name] = (winnerCounts[name] || 0) + 1;
+    });
+
+    const leaderboard = Object.entries(winnerCounts)
+      .map(([name, count]) => {
+        const winnerData = segments.find((segment) => segment.name === name);
+        return {
+          name,
+          count,
+          image: winnerData ? winnerData.image : "/user2.png",
+        };
+      })
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+      .slice(0, 5);
+
+    return leaderboard;
+  };
 
   const spinWheelProps = {
     segments,
@@ -887,18 +1208,18 @@ export default function SpinWheel() {
     arrowLocation: "top",
     showTextOnSpin: true,
     isSpinSound: true,
-  }
+  };
 
   if (!isClient) {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
         <div className="text-xl">Loading...</div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="min-h-screen  text-white flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen text-white flex flex-col items-center justify-center p-4">
       <div className="max-w-2xl w-full space-y-8">
         {/* Header */}
         <div className="text-center">
@@ -919,7 +1240,6 @@ export default function SpinWheel() {
                 {count} Spin
               </button>
             ))}
-
             <button className="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
               <Settings className="w-5 h-5" />
             </button>
@@ -934,7 +1254,6 @@ export default function SpinWheel() {
         {/* Spin Wheel */}
         <div className="relative flex justify-center">
           <div className="relative">
-            {/* Custom wrapper to handle spin start */}
             <div
               onClick={handleSpinStart}
               className="cursor-pointer"
@@ -960,13 +1279,40 @@ export default function SpinWheel() {
             </div>
           </div>
         )}
+
+        {/* Leaderboard */}
+        {spinHistory.length > 0 && (
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-3">Leaderboard</h3>
+            <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
+              {getLeaderboard().map((entry, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between bg-gray-800 p-3 rounded-lg"
+                >
+                  <div className="flex items-center space-x-3">
+                    <span className="text-yellow-400 font-bold">{index + 1}.</span>
+                    <div className="w-8 h-8 rounded-full overflow-hidden">
+                      <img
+                        src={entry.image || "/placeholder.svg?height=32&width=32"}
+                        alt={entry.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className="text-white font-medium">{entry.name}</span>
+                  </div>
+                  <span className="text-purple-400 font-semibold">{entry.count} wins</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Giveaway Winner Modal */}
       {showWinnerModal && winner && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="relative bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4 overflow-hidden">
-            {/* Background confetti pattern */}
             <div className="absolute inset-0 opacity-20">
               <div className="absolute top-4 left-8 w-8 h-12 bg-yellow-400 transform rotate-45 rounded-sm"></div>
               <div className="absolute top-12 right-12 w-6 h-10 bg-yellow-500 transform -rotate-12 rounded-sm"></div>
@@ -977,7 +1323,6 @@ export default function SpinWheel() {
               <div className="absolute bottom-32 left-8 w-3 h-6 bg-yellow-400 transform -rotate-30 rounded-sm"></div>
             </div>
 
-            {/* Close button */}
             <button
               onClick={closeWinnerModal}
               className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
@@ -985,19 +1330,13 @@ export default function SpinWheel() {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Content */}
             <div className="relative z-10 text-center">
-              {/* Main heading */}
               <h1 className="text-white text-3xl font-bold mb-4">Spin Winner!</h1>
-
-              {/* Congratulations text */}
               <div className="mb-2">
                 <span className="text-2xl">🎉</span>
                 <span className="text-white text-lg font-semibold mx-2">Congratulations!</span>
                 <span className="text-2xl">🎉</span>
               </div>
-
-              {/* Current Winner Display */}
               <div className="mb-6">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 mb-4 mx-auto overflow-hidden flex items-center justify-center">
                   <img
@@ -1009,13 +1348,10 @@ export default function SpinWheel() {
                 <p className="text-white text-xl font-bold mb-1">{winner.name}</p>
                 <p className="text-purple-400 text-lg font-semibold">Ticket: {winner.segmentText}</p>
               </div>
-
-              {/* Recent Winners Grid */}
               {getRecentWinners().length > 0 && (
                 <>
                   <p className="text-gray-300 text-sm mb-4">Recent Winners</p>
                   <div className="space-y-4">
-                    {/* Display recent winners in rows */}
                     <div className="flex justify-center space-x-6">
                       {getRecentWinners()
                         .slice(0, 3)
@@ -1033,7 +1369,6 @@ export default function SpinWheel() {
                           </div>
                         ))}
                     </div>
-
                     {getRecentWinners().length > 3 && (
                       <div className="flex justify-center space-x-12">
                         {getRecentWinners()
@@ -1056,8 +1391,6 @@ export default function SpinWheel() {
                   </div>
                 </>
               )}
-
-              {/* Continue Button */}
               <div className="mt-6">
                 <button
                   onClick={closeWinnerModal}
@@ -1072,5 +1405,5 @@ export default function SpinWheel() {
         </div>
       )}
     </div>
-  )
+  );
 }

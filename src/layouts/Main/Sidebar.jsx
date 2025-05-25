@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [openNome, setOpenNome] = useState({});
+  const [, setOpenNome] = useState({});
 
   const handleLogOut = () => {
     Swal.fire({
