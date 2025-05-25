@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import PageHeading from "../../Components/PageHeading";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
@@ -48,36 +47,19 @@ const EditTermsConditions = () => {
 
   return (
     <>
-      <div className="flex items-center gap-2 text-xl">
+      <div className="flex items-center gap-2 text-xl text-white">
         <FaAngleLeft />
         <h1>Terms & Condition </h1>
       </div>
-      <div className="rounded-lg py-4 border-lightGray border-2 shadow-lg mt-8 bg-white">
+      <div className="rounded-lg py-4  shadow-lg mt-8 ">
         <div className="space-y-[24px] min-h-[83vh] bg-light-gray rounded-2xl">
-          <h3 className="text-2xl text-black mb-4 border-b-2 border-lightGray/40 pb-3 pl-16">
+          <h3 className="text-2xl text-white mb-4 border-b-2 border-lightGray/40 pb-3 pl-16">
             Terms & Condition Edit
           </h3>
           <div className="w-full px-16">
-            <div className="h-full border border-gray-400 rounded-md">
+            <div className="h-full  rounded-md">
               <div className="ql-toolbar-container h-56">
-                {/* <div id="toolbar">
-                  <span className="ql-formats">
-
-                    <button className="ql-align" value="left">
-                      Left
-                    </button>
-                    <button className="ql-align" value="center">
-                      Center
-                    </button>
-                    <button className="ql-align" value="right">
-                      Right
-                    </button>
-                    <button className="ql-align" value="justify">
-                      Justify
-                    </button>
-                  </span>
-
-                </div> */}
+              
                 <ReactQuill
                   placeholder="Enter your update terms & conditions..."
                   theme="snow"
@@ -85,7 +67,7 @@ const EditTermsConditions = () => {
                   onChange={(value) => setContent(value)}
                   modules={modules}
                   formats={formats}
-                  className="custom-quill-editor"
+                  className="custom-quill-editor text-white"
                 />
               </div>
             </div>
