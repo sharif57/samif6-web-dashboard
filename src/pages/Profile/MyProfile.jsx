@@ -1,29 +1,22 @@
-
 import dashProfile from "../../assets/images/dashboard-profile.png";
 
-import { useState } from "react";
 import { ArrowLeft, User, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUserProfileQuery } from "../../redux/features/userSlice";
 
 export default function MyProfile() {
-  const [userInfo, setUserInfo] = useState({
-    name: "Sharon Ahmed",
-    email: "Example@Gmail.Com",
-  });
+
 
   const handleBack = () => {
     console.log("Back button clicked");
     // Add navigation logic here
   };
+  const { data } = useUserProfileQuery();
+  console.log("User Profile Data:", data);
 
+  const IMAGE = import.meta.env.VITE_IMAGE_API;
 
-
-  const handleInputChange = (field, value) => {
-    setUserInfo((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+  
 
   return (
     <div className="bg-[#404040] rounded-lg  p-6">
@@ -48,7 +41,7 @@ export default function MyProfile() {
             <div className="flex-shrink-0 bg-[#5F5F5F] p-8 rounded-lg">
               <div className="w-32 h-32 rounded-2xl overflow-hidden  mb-4">
                 <img
-                  src={dashProfile}
+                  src={`${IMAGE}${data?.profile_pic || dashProfile}`}
                   alt="Profile picture"
                   className="w-full h-full object-cover"
                 />
@@ -67,8 +60,8 @@ export default function MyProfile() {
                 </div>
                 <input
                   type="text"
-                  value={userInfo.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  readOnly
+                  defaultValue={data?.full_name || ""}
                   className="w-full bg-[#5F5F5F] text-white pl-12 pr-4 py-4 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all disabled:cursor-default"
                 />
               </div>
@@ -80,8 +73,8 @@ export default function MyProfile() {
                 </div>
                 <input
                   type="email"
-                  value={userInfo.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  readOnly
+                  defaultValue={data?.email || ""}
                   className="w-full bg-[#5F5F5F] text-white pl-12 pr-4 py-4 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all disabled:cursor-default"
                 />
               </div>

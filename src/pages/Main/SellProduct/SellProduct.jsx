@@ -7,6 +7,7 @@
 import { useState } from "react";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAllProductsQuery } from "../../../redux/features/productsSlice";
 
 // Sample product data
 const products = Array.from({ length: 72 }, (_, index) => ({
@@ -21,6 +22,11 @@ const PRODUCTS_PER_PAGE = 12;
 
 export default function ProductCatalog() {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const IMAGE = import.meta.env.VITE_IMAGE_API;
+
+  const { data } = useAllProductsQuery();
+  console.log(data);
 
   const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
   const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
@@ -99,20 +105,27 @@ export default function ProductCatalog() {
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 mb-8">
-          {currentProducts.map((product) => (
+          {data?.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-lg overflow-hidden shadow-lg"
+              className="bg-white rounded-lg overflow-hidden shadow-lg h-auto "
             >
-              <img src={product.image} alt="" />
+              <img
+                // src={`${IMAGE}${product?.product_image}` || "/product.png"}
+                src={product?.product_image}
+                alt=""
+                className="w-full h-56 object-cover"
+              />
 
               {/* Product Info */}
-              <div className="p-4 bg-[#404040] text-white">
-                <h3 className="font-semibold text-sm mb-1">{product.name}</h3>
+              <div className="p-4 bg-[#404040] text-white ">
+                <h3 className="font-semibold text-sm mb-1">
+                  {product?.product_name}
+                </h3>
                 <p className="text-gray-400 text-xs mb-2">
-                  {product.description}
+                  {product?.product_description}
                 </p>
-                <p className="font-bold text-sm">{product.price}</p>
+                <p className="font-bold text-sm">{product?.product_price}</p>
               </div>
             </div>
           ))}

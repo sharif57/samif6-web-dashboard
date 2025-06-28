@@ -1,6 +1,8 @@
+import { useAllUserQuery } from "../../../redux/features/userSlice";
 import User from "../Shop/User";
 
 const DashboardHome = () => {
+  const {data} = useAllUserQuery();
   return (
     <div className="space-y-[24px]">
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-x-10 lg:gap-x-10  gap-y-10 ">
@@ -26,7 +28,7 @@ const DashboardHome = () => {
           </div>
           <div className="text-center">
             <h3 className="text-[20px] text-[#FFFFFF]">{"Total users"}</h3>
-            <h3 className=" text-white font-medium text-[48px]">400</h3>
+            <h3 className=" text-white font-medium text-[48px]">{data?.total_users}</h3>
           </div>
         </div>
 
@@ -59,8 +61,7 @@ const DashboardHome = () => {
           </div>
         </div>
       </div>
-      {/* <BarChartComponent /> */}
-      {/* <DashboardHomeTable /> */}
+
       <User />
     </div>
   );

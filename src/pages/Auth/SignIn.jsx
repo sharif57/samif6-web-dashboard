@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react"; // Added ArrowLeft import
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../redux/features/authSlice.js"; // Adjust the import path as necessary
+import { useLoginMutation } from "../../redux/features/authSlice.js"; // Adjust path as needed
+import toast from "react-hot-toast";
 
 export default function SignIn() {
   const [login] = useLoginMutation();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -21,23 +23,35 @@ export default function SignIn() {
 
   const handleBack = () => {
     console.log("Back button clicked");
-    // Add navigation logic here
+    navigate(-1); // Navigate to the previous page
   };
 
   const handleSignIn = async () => {
-    try {
-      console.log("Sign in clicked", formData);
-      const response = await login(formData);
-      console.log("Login response:", response);
-    } catch (error) {
-      console.error("Login error:", error);
+    if (!formData.email || !formData.password) {
+      toast.error("Please fill in all required fields.");
+      return;
     }
-    // Add sign in logic here
+
+    setLoading(true); // Set loading state to true
+    try {
+      const response = await login(formData).unwrap();
+      toast.success(response?.message);
+      localStorage.setItem("accessToken", response?.access_token);
+     navigate("/"); // Navigate to the home page after successful login
+    } catch (error) {
+      toast.error(
+        error?.data?.detail ||
+          error?.message ||
+          "Login failed. Please try again."
+      );
+      console.error("Login error:", error);
+    } finally {
+      setLoading(false); // Reset loading state
+    }
   };
 
   const handleForgotPassword = () => {
     console.log("Forgot password clicked");
-    // Add forgot password logic here
     navigate("/auth/forgot-password");
   };
 
@@ -57,14 +71,16 @@ export default function SignIn() {
           {/* Sign In Form */}
           <div className="bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
             {/* Header */}
-            <div className="flex items-center justify-center mb-8">
+            <div className="flex items-center justify-between mb-8">
               <button
                 onClick={handleBack}
-                className="text-white hover:text-gray-300 transition-colors mr-4"
+                className="text-white hover:text-gray-300 transition-colors"
+                aria-label="Go back"
               >
-                {/* <ArrowLeft className="w-5 h-5" /> */}
+                <ArrowLeft className="w-5 h-5" />
               </button>
               <h1 className="text-white text-[36px] font-semibold">Sign In</h1>
+              <div className="w-5" /> {/* Spacer for alignment */}
             </div>
 
             {/* Form Fields */}
@@ -76,7 +92,9 @@ export default function SignIn() {
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="Enter Your Email"
-                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12  border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  required
+                  aria-label="Email address"
                 />
               </div>
 
@@ -85,16 +103,17 @@ export default function SignIn() {
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
-                  onChange={(e) =>
-                    handleInputChange("password", e.target.value)
-                  }
+                  onChange={(e) => handleInputChange("password", e.target.value)}
                   placeholder="Your Password"
-                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12  border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  required
+                  aria-label="Password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute  right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -104,9 +123,9 @@ export default function SignIn() {
                 </button>
               </div>
 
-              {/* Forgot Password Link */}
+              {/* Forgot Password Link and Remember Me Checkbox */}
               <div className="flex justify-between items-center">
-                <div>
+                <div className="flex items-center">
                   <input
                     type="checkbox"
                     id="rememberMe"
@@ -114,7 +133,7 @@ export default function SignIn() {
                     onChange={(e) =>
                       handleInputChange("rememberMe", e.target.checked)
                     }
-                    className="w-4 h-4  text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500 focus:ring-2"
+                    className="w-4 h-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500 focus:ring-2"
                   />
                   <label
                     htmlFor="rememberMe"
@@ -131,28 +150,19 @@ export default function SignIn() {
                 </button>
               </div>
 
-              {/* Remember Me Checkbox */}
-              <div className="flex items-center">
+              {/* Sign In Button */}
+              <div>
                 <button
                   onClick={handleSignIn}
-                  className="w-full bg-[#534590] rounded-full hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-4  transition-all transform hover:scale-[1.02] shadow-lg"
+                  disabled={loading}
+                  className={`w-full bg-[#534590] rounded-full hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-4 transition-all transform hover:scale-[1.02] shadow-lg ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  aria-label="Sign in"
                 >
-                  Sign In
+                  {loading ? "Signing In..." : "Sign In"}
                 </button>
               </div>
-
-              {/* Sign In Button */}
-
-              {/* Sign Up Link */}
-              {/* <div className="text-center">
-                <span className="text-gray-400 text-sm">Dont have an Account? </span>
-                <button
-                  onClick={handleSignUp}
-                  className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                >
-                  Sign Up
-                </button>
-              </div> */}
             </div>
           </div>
         </div>
