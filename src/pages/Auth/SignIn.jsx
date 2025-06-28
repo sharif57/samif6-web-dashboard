@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../redux/features/authSlice.js"; // Adjust the import path as necessary
 
 export default function SignIn() {
+  const [login] = useLoginMutation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    rememberMe: false,
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,8 +24,14 @@ export default function SignIn() {
     // Add navigation logic here
   };
 
-  const handleSignIn = () => {
-    console.log("Sign in clicked", formData);
+  const handleSignIn = async () => {
+    try {
+      console.log("Sign in clicked", formData);
+      const response = await login(formData);
+      console.log("Login response:", response);
+    } catch (error) {
+      console.error("Login error:", error);
+    }
     // Add sign in logic here
   };
 
@@ -42,11 +49,7 @@ export default function SignIn() {
         style={{
           backgroundImage: "url('/auth.png')",
         }}
-      >
-        {/* Concert venue background with blue/teal lighting and crowd */}
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-teal-900/70 to-blue-800/80"></div> */}
-        {/* <div className="absolute inset-0 bg-black/40"></div> */}
-      </div>
+      ></div>
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-6">

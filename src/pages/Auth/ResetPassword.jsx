@@ -1,14 +1,6 @@
-// import React from 'react'
-
-// export default function ResetPassword() {
-//   return (
-//     <div>ResetPassword</div>
-//   )
-// }
-
 
 import { useState } from "react"
-import { ArrowLeft, Lock, Eye, EyeOff } from "lucide-react"
+import {  Lock, Eye, EyeOff } from "lucide-react"
 
 export default function VerifyPassword() {
   const [formData, setFormData] = useState({
@@ -22,10 +14,7 @@ export default function VerifyPassword() {
     confirmPassword: "",
   })
 
-  const handleBack = () => {
-    console.log("Back button clicked")
-    // Add navigation logic here
-  }
+
 
   const validatePassword = (password) => {
     if (password.length < 8 || password.length > 10) {
