@@ -1,9 +1,3 @@
-// export default function SellProduct() {
-//   return (
-//     <div>SellProduct</div>
-//   )
-// }
-
 import { useState } from "react";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";

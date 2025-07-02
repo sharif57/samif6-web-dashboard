@@ -1032,7 +1032,7 @@
 // }
 
 import { useState, useRef, useEffect } from "react";
-import { Settings, X } from "lucide-react";
+import { X } from "lucide-react";
 import { SpinWheel as SpinWheelGame } from "spin-wheel-game";
 
 const segments = [
@@ -1054,11 +1054,9 @@ const segments = [
   { segmentText: "10FDH40J6hj", image: "/user2.png", name: "mohamed", segColor: "#6B5B95" },
 ];
 
-const spinCounts = [5, 10, 15, 20, 25];
 
 export default function SpinWheel() {
   const [isSpinning, setIsSpinning] = useState(false);
-  const [selectedSpinCount, setSelectedSpinCount] = useState(10);
   const [remainingSpins, setRemainingSpins] = useState(10);
   const [winner, setWinner] = useState(null);
   const [showWinnerModal, setShowWinnerModal] = useState(false);
@@ -1150,12 +1148,6 @@ export default function SpinWheel() {
     playSpinSound();
   };
 
-  const resetSpins = (count) => {
-    setSelectedSpinCount(count);
-    setRemainingSpins(count);
-    setSpinHistory([]);
-  };
-
   const closeWinnerModal = () => {
     setShowWinnerModal(false);
     setWinner(null);
@@ -1224,31 +1216,6 @@ export default function SpinWheel() {
         {/* Header */}
         <div className="text-center">
           <h1 className="text-2xl md:text-[36px] font-semibold mb-6">How many times do you want to spin?</h1>
-
-          {/* Spin Count Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-4">
-            {spinCounts.map((count) => (
-              <button
-                key={count}
-                onClick={() => resetSpins(count)}
-                className={`px-4 py-2 rounded-full font-medium transition-all ${
-                  selectedSpinCount === count
-                    ? "bg-purple-600 text-white"
-                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                }`}
-              >
-                {count} Spin
-              </button>
-            ))}
-            <button className="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-              <Settings className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Remaining Spins */}
-          <p className="text-lg text-gray-300">
-            Remaining Spins: <span className="font-bold text-purple-400">{remainingSpins}</span>
-          </p>
         </div>
 
         {/* Spin Wheel */}

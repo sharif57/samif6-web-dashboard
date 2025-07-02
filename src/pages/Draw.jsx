@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAllTicketsQuery } from "../redux/features/ticketSlice";
 
 export default function Component() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+
+  const {data}= useAllTicketsQuery();
+  console.log("Tickets Data:", data);
 
   const users = [
     {

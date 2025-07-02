@@ -1,14 +1,7 @@
-
-// export default function AddProduct() {
-//   return (
-//     <div>AddProduct</div>
-//   )
-// }
-
-
-
 import { useState, useRef } from "react"
 import { ImagePlus } from "lucide-react"
+
+
 
 export default function ProductForm() {
   const [formData, setFormData] = useState({
@@ -125,3 +118,5 @@ export default function ProductForm() {
     </div>
   )
 }
+
+

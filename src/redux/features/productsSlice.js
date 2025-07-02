@@ -9,6 +9,7 @@ export const productsApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Products"],
     }),
+   
   }),
 });
 
