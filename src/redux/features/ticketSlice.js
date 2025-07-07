@@ -3,9 +3,9 @@ import baseApi from "../api/baseApi";
 
 export const ticketsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    allTickets: builder.query({
+    allTicketsPurchases: builder.query({
       query: () => ({
-        url: "api/ticket/tickets/",
+        url: "api/ticket/tickets/my-purchases/",
         method: "GET",
       }),
       providesTags: ["Tickets"],
@@ -14,4 +14,4 @@ export const ticketsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useAllTicketsQuery } = ticketsApi;
+export const { useAllTicketsPurchasesQuery } = ticketsApi;

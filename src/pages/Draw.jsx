@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAllTicketsQuery } from "../redux/features/ticketSlice";
+import { useAllTicketsPurchasesQuery } from "../redux/features/ticketSlice";
 
 export default function Component() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
-  const {data}= useAllTicketsQuery();
+  const {data}= useAllTicketsPurchasesQuery();
   console.log("Tickets Data:", data);
 
   const users = [
@@ -108,7 +108,7 @@ export default function Component() {
             <div className="flex items-center justify-between gap-4 bg-[#534590] container mx-auto w-full px-6 py-4 text-sm font-medium text-white">
               <div className="flex-1 text-center">Ticket Num</div>
               <div className="flex-1 text-center">User</div>
-              <div className="flex-1 text-center flex items-center justify-center gap-1">
+              {/* <div className="flex-1 text-center flex items-center justify-center gap-1">
                 Ticket Count
                 <svg
                   className="h-3 w-3"
@@ -121,7 +121,7 @@ export default function Component() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </div> */}
               <div className="flex-1 text-center">Amount</div>
               <div className="flex-1 text-center">Action</div>
             </div>
@@ -129,16 +129,16 @@ export default function Component() {
 
           {/* Table Body */}
           <div className="divide-y divide-gray-700">
-            {users.map((user, index) => (
+            {data?.map((user, index) => (
               <div
                 key={index}
                 className="flex items-center justify-between gap-4 px-6 py-4 text-sm text-white"
               >
-                <div className="flex-1 0 text-center">{user.ticketNum}</div>
-                <div className="flex-1 text-white text-center">{user.user}</div>
-                <div className="flex-1  text-center">{user.ticketCount}</div>
+                <div className="flex-1 0 text-center">{user?.id}</div>
+                <div className="flex-1 text-white text-center">{user?.user}</div>
+                {/* <div className="flex-1  text-center">{user.ticketCount}</div> */}
                 <div className="flex-1 text-white text-center">
-                  {user.amount}
+                  {user?.total_price}
                 </div>
                 <div className="flex-1 text-center">
                   <button
@@ -233,17 +233,14 @@ export default function Component() {
 
               <div className="flex justify-between">
                 <span className="text-gray-400">Ticket Num</span>
-                <span className="text-white">{selectedUser.ticketNum}</span>
+                <span className="text-white">{selectedUser?.id}</span>
               </div>
 
-              <div className="flex justify-between">
-                <span className="text-gray-400">Ticket Count</span>
-                <span className="text-white">{selectedUser.ticketCount}</span>
-              </div>
+              
 
               <div className="flex justify-between">
                 <span className="text-gray-400">Amount</span>
-                <span className="text-white">{selectedUser.amount}</span>
+                <span className="text-white">{selectedUser?.total_price}</span>
               </div>
             </div>
 
