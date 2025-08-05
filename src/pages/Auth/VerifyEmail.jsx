@@ -1,11 +1,3 @@
-// import React from 'react'
-
-// export default function VerifyEmail() {
-//   return (
-//     <div>VerifyEmail</div>
-//   )
-// }
-
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +6,6 @@ export default function VerifyEmail() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef([]);
 
-  
   const handleOtpChange = (index, value) => {
     // Only allow single digit
     if (value.length > 1) return;
@@ -62,7 +53,7 @@ export default function VerifyEmail() {
     if (otpCode.length === 6) {
       // Add verification logic here
       console.log("OTP is complete:", otpCode);
-      navigate('/auth/reset-password')
+      navigate("/auth/reset-password");
     } else {
       console.log("Please enter complete OTP");
     }
@@ -76,10 +67,10 @@ export default function VerifyEmail() {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className='min-h-screen relative overflow-hidden'>
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
         style={{
           backgroundImage: "url('/auth.png')",
         }}
@@ -88,33 +79,33 @@ export default function VerifyEmail() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
-        <div className="w-full max-w-md">
+      <div className='relative z-10 min-h-screen flex items-center justify-center p-6'>
+        <div className='w-full max-w-md'>
           {/* Verify Email Form */}
-          <div className="bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+          <div className='bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800'>
             {/* Header */}
-            <div className="flex items-center justify-center mb-8">
-              <h1 className="text-white text-[36px] font-semibold">
+            <div className='flex items-center justify-center mb-8'>
+              <h1 className='text-white text-[36px] font-semibold'>
                 Verify Email
               </h1>
             </div>
 
             {/* OTP Input Fields */}
-            <div className="mb-8">
-              <div className="flex justify-center gap-3 mb-6">
+            <div className='mb-8'>
+              <div className='flex justify-center gap-3 mb-6'>
                 {otp.map((digit, index) => (
                   <input
                     key={index}
                     ref={(el) => (inputRefs.current[index] = el)}
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
+                    type='text'
+                    inputMode='numeric'
+                    pattern='[0-9]*'
                     maxLength={1}
                     value={digit}
                     onChange={(e) => handleOtpChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     onPaste={handlePaste}
-                    className="w-12 h-12 bg-white text-black text-center text-xl font-semibold rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                    className='w-12 h-12 bg-white text-black text-center text-xl font-semibold rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all'
                   />
                 ))}
               </div>
@@ -134,8 +125,8 @@ export default function VerifyEmail() {
             </div>
 
             {/* Description Text */}
-            <div className="text-center">
-              <p className="text-gray-400 text-sm">
+            <div className='text-center'>
+              <p className='text-gray-400 text-sm'>
                 Please enter the OTP we have sent you in your email.
               </p>
             </div>

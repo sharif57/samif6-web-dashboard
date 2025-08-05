@@ -3,20 +3,18 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://192.168.10.33:8002/",
+    baseUrl: import.meta.env.VITE_API_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("accessToken");
 
-      // console.log("Current token:", token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
 
-      // console.log("Prepared headers:", headers);
       return headers;
     },
   }),
-  tagTypes: ["User", "Products", 'Tickets'], // Added all necessary tags
+  tagTypes: ["User", "Products", "Tickets"],
   endpoints: () => ({}),
 });
 

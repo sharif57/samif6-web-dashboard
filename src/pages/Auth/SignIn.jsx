@@ -23,7 +23,7 @@ export default function SignIn() {
 
   const handleBack = () => {
     console.log("Back button clicked");
-    navigate(-1); // Navigate to the previous page
+    navigate(-1);
   };
 
   const handleSignIn = async () => {
@@ -32,12 +32,14 @@ export default function SignIn() {
       return;
     }
 
-    setLoading(true); // Set loading state to true
+    setLoading(true);
     try {
       const response = await login(formData).unwrap();
       toast.success(response?.message);
       localStorage.setItem("accessToken", response?.access_token);
-     navigate("/"); // Navigate to the home page after successful login
+      localStorage.setItem("refreshToken", response?.refresh_token);
+
+      navigate("/");
     } catch (error) {
       toast.error(
         error?.data?.detail ||
@@ -46,7 +48,7 @@ export default function SignIn() {
       );
       console.error("Login error:", error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 
@@ -56,95 +58,97 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className='min-h-screen relative overflow-hidden'>
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
         style={{
           backgroundImage: "url('/auth.png')",
         }}
       ></div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
-        <div className="w-full max-w-md">
+      <div className='relative z-10 min-h-screen flex items-center justify-center p-6'>
+        <div className='w-full max-w-md'>
           {/* Sign In Form */}
-          <div className="bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+          <div className='bg-[#090909] backdrop-blur-sm rounded-2xl p-8 border border-gray-800'>
             {/* Header */}
-            <div className="flex items-center justify-between mb-8">
+            <div className='flex items-center justify-between mb-8'>
               <button
                 onClick={handleBack}
-                className="text-white hover:text-gray-300 transition-colors"
-                aria-label="Go back"
+                className='text-white hover:text-gray-300 transition-colors'
+                aria-label='Go back'
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className='w-5 h-5' />
               </button>
-              <h1 className="text-white text-[36px] font-semibold">Sign In</h1>
-              <div className="w-5" /> {/* Spacer for alignment */}
+              <h1 className='text-white text-[36px] font-semibold'>Sign In</h1>
+              <div className='w-5' /> {/* Spacer for alignment */}
             </div>
 
             {/* Form Fields */}
-            <div className="space-y-6">
+            <div className='space-y-6'>
               {/* Email Field */}
               <div>
                 <input
-                  type="email"
+                  type='email'
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  placeholder="Enter Your Email"
-                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  placeholder='Enter Your Email'
+                  className='w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400'
                   required
-                  aria-label="Email address"
+                  aria-label='Email address'
                 />
               </div>
 
               {/* Password Field */}
-              <div className="relative">
+              <div className='relative'>
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
-                  placeholder="Your Password"
-                  className="w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400"
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
+                  placeholder='Your Password'
+                  className='w-full bg-[#404040] rounded-full text-white px-4 py-4 pr-12 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-400'
                   required
-                  aria-label="Password"
+                  aria-label='Password'
                 />
                 <button
-                  type="button"
+                  type='button'
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className='absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors'
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    <EyeOff className="w-5 h-5" />
+                    <EyeOff className='w-5 h-5' />
                   ) : (
-                    <Eye className="w-5 h-5" />
+                    <Eye className='w-5 h-5' />
                   )}
                 </button>
               </div>
 
               {/* Forgot Password Link and Remember Me Checkbox */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center">
+              <div className='flex justify-between items-center'>
+                <div className='flex items-center'>
                   <input
-                    type="checkbox"
-                    id="rememberMe"
+                    type='checkbox'
+                    id='rememberMe'
                     checked={formData.rememberMe}
                     onChange={(e) =>
                       handleInputChange("rememberMe", e.target.checked)
                     }
-                    className="w-4 h-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500 focus:ring-2"
+                    className='w-4 h-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500 focus:ring-2'
                   />
                   <label
-                    htmlFor="rememberMe"
-                    className="ml-3 text-gray-300 text-sm"
+                    htmlFor='rememberMe'
+                    className='ml-3 text-gray-300 text-sm'
                   >
                     Remember me
                   </label>
                 </div>
                 <button
                   onClick={handleForgotPassword}
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                  className='text-gray-400 hover:text-white text-sm transition-colors'
                 >
                   Forgot password?
                 </button>
@@ -158,7 +162,7 @@ export default function SignIn() {
                   className={`w-full bg-[#534590] rounded-full hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-4 transition-all transform hover:scale-[1.02] shadow-lg ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
                   }`}
-                  aria-label="Sign in"
+                  aria-label='Sign in'
                 >
                   {loading ? "Signing In..." : "Sign In"}
                 </button>
