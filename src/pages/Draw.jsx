@@ -94,7 +94,7 @@ export default function Component() {
         {/* Header */}
         <div className="mb-6 p-4 flex items-center justify-between">
           <h1 className="text-xl font-medium text-white">Purchased User</h1>
-          <Link to={'/spanner'}>
+          <Link to={'/trust/spanner'}>
             <button className="rounded-md border border-gray-600 bg-gray-700 px-4 py-2 text-sm text-white hover:bg-gray-600 transition-colors">
               🎲 Raffle Draw
             </button>

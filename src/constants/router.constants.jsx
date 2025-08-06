@@ -25,10 +25,9 @@ import AddItem from "../pages/Main/Shop/AddItem";
 import TransactionHome from "../pages/Main/Transaction/TransactionHome";
 import User from "../pages/Main/Shop/User";
 import Subscription from "../pages/Main/Parties/Subscription";
-import Draw from "../pages/Draw";
 import Spanner from "../pages/Main/Draw/Spanner";
-import SellProduct from "../pages/Main/SellProduct/SellProduct";
 import AddProduct from "../pages/Main/SellProduct/AddProduct";
+import TicketCreate from "../pages/Main/Ticket/TicketCreate";
 
 export const dashboardItems = [
   {
@@ -57,20 +56,26 @@ export const dashboardItems = [
 
   {
     name: "Raffle Draw",
-    path: "trust",
-    icon: MdOutlineSecurityUpdateWarning,
-    element: <Draw />,
-  },
-  {
     path: "spanner",
+    icon: MdOutlineSecurityUpdateWarning,
     element: <Spanner />,
   },
   {
-    name: "Sell Product",
-    path: "sell-product",
-    icon: ShoppingBag,
-    element: <SellProduct />,
+    name: 'Create Ticket',
+    path: 'create-ticket',
+    icon: FaServicestack,
+    element: <TicketCreate />
   },
+  {
+    path: "trust/spanner",
+    element: <Spanner />,
+  },
+  // {
+  //   name: "Sell Product",
+  //   path: "sell-product",
+  //   icon: ShoppingBag,
+  //   element: <SellProduct />,
+  // },
   {
     path:'sell-product/add-product',
     element:<AddProduct/>
