@@ -5,8 +5,13 @@ import { usePrivacyGetQuery } from "../../redux/features/privacySlice";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
-  const {data} = usePrivacyGetQuery();
+  const {data, isLoading} = usePrivacyGetQuery();
+  
   console.log(data);
+
+  if(isLoading){
+    return <h1 className="text-center text-white">Loading...</h1>
+  }
   return (
     <>
       <div onClick={() => navigate(-1)} className="flex cursor-pointer items-center gap-2 text-xl text-white">

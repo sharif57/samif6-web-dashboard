@@ -27,8 +27,35 @@ export const privacyApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Privacy"],
     }),
+
+    updateTerms: builder.mutation({
+      query: (body) => ({
+        url: "api/dicipline/terms-conditions/",
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["Privacy"],
+    }),
+
+    // api/dicipline/trust-safety/
+    safety: builder.query({
+      query: () => ({
+        url: "api/dicipline/trust-safety/",
+        method: "GET",
+      }),
+      providesTags: ["Privacy"],
+    }),
+
+    updateSafety: builder.mutation({
+      query: (body) => ({
+        url: "api/dicipline/trust-safety/",
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["Privacy"],
+    }),
    
   }),
 });
 
-export const { usePrivacyGetQuery , useUpdatePrivacyMutation, useTermsQuery} = privacyApi;
+export const { usePrivacyGetQuery , useUpdatePrivacyMutation, useTermsQuery , useUpdateTermsMutation , useSafetyQuery, useUpdateSafetyMutation } = privacyApi;
