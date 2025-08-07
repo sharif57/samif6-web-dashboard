@@ -4,7 +4,7 @@ import User from "../Shop/User";
 const DashboardHome = () => {
   const {data} = useAllUserQuery();
   const {data:earn} =useDashboardQuery();
-  console.log(earn?.total_earning,'earn')
+  console.log(earn,'earn')
   return (
     <div className="space-y-[24px]">
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-x-10 lg:gap-x-10  gap-y-10 ">
@@ -60,6 +60,62 @@ const DashboardHome = () => {
           <div className="text-center">
             <h3 className="text-[20px] text-[#FFFFFF]">{"Total Earnings"}</h3>
             <h3 className=" text-white font-medium text-[48px]">${earn?.total_earning || 0}</h3>
+          </div>
+        </div>
+        <div className="flex items-center justify-center gap-6 px-[24px]  py-[20px] rounded-lg space-y-3 bg-[#404040] w-96 md:w-full">
+          {/* <div className="bg-[#534590] p-6 rounded-2xl"> */}
+          {/* <img src="/users.png" alt="" /> */}
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 80 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="80" height="80" rx="16" fill="#534590" />
+            <path
+              d="M26 54H56C57.1046 54 58 54.8954 58 56C58 57.1046 57.1046 58 56 58H24C22.8954 58 22 57.1046 22 56V24C22 22.8954 22.8954 22 24 22C25.1046 22 26 22.8954 26 24V54Z"
+              fill="white"
+            />
+            <path
+              opacity="0.5"
+              d="M33.459 45.3677C32.7036 46.1735 31.4379 46.2144 30.6321 45.4589C29.8262 44.7035 29.7854 43.4378 30.5409 42.632L38.0409 34.632C38.7715 33.8526 39.9856 33.785 40.7982 34.4785L46.7177 39.5297L54.4302 29.7605C55.1146 28.8936 56.3723 28.7456 57.2392 29.4301C58.1062 30.1145 58.2542 31.3722 57.5697 32.2391L48.5697 43.6391C47.8667 44.5296 46.5647 44.6576 45.7017 43.9212L39.6536 38.7602L33.459 45.3677Z"
+              fill="white"
+            />
+          </svg>
+
+          {/* </div> */}
+          <div className="text-center">
+            <h3 className="text-[20px] text-[#FFFFFF]">{"Total Subscriber"}</h3>
+            <h3 className=" text-white font-medium text-[48px]">{earn?.total_subscribed_users || 0}</h3>
+          </div>
+        </div>
+        <div className="flex items-center justify-center gap-6 px-[24px]  py-[20px] rounded-lg space-y-3 bg-[#404040] w-96 md:w-full">
+          {/* <div className="bg-[#534590] p-6 rounded-2xl"> */}
+          {/* <img src="/users.png" alt="" /> */}
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 80 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="80" height="80" rx="16" fill="#534590" />
+            <path
+              d="M26 54H56C57.1046 54 58 54.8954 58 56C58 57.1046 57.1046 58 56 58H24C22.8954 58 22 57.1046 22 56V24C22 22.8954 22.8954 22 24 22C25.1046 22 26 22.8954 26 24V54Z"
+              fill="white"
+            />
+            <path
+              opacity="0.5"
+              d="M33.459 45.3677C32.7036 46.1735 31.4379 46.2144 30.6321 45.4589C29.8262 44.7035 29.7854 43.4378 30.5409 42.632L38.0409 34.632C38.7715 33.8526 39.9856 33.785 40.7982 34.4785L46.7177 39.5297L54.4302 29.7605C55.1146 28.8936 56.3723 28.7456 57.2392 29.4301C58.1062 30.1145 58.2542 31.3722 57.5697 32.2391L48.5697 43.6391C47.8667 44.5296 46.5647 44.6576 45.7017 43.9212L39.6536 38.7602L33.459 45.3677Z"
+              fill="white"
+            />
+          </svg>
+
+          {/* </div> */}
+          <div className="text-center">
+            <h3 className="text-[20px] text-[#FFFFFF]">{"Total Verified Users"}</h3>
+            <h3 className=" text-white font-medium text-[48px]">{earn?.verified_users || 0}</h3>
           </div>
         </div>
       </div>

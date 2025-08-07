@@ -15,6 +15,7 @@ const Spanner = () => {
   const [winner, setWinner] = useState(null);
   // const { data, isLoading, isError } = useSpinTicketQuery();
   const {data: giveWayId, isLoading, isError} = useGiveWayIdQuery()
+  console.log(giveWayId, 'give way id')
   const {data: collectTicket} = useCollectTicketQuery()
   console.log(collectTicket, 'collect ticket')
   const spinRef = useRef(null);
@@ -82,7 +83,7 @@ const Spanner = () => {
         <SpinAndWin 
         ref={spinRef}
         data={freeSpinGifts}
-        onSpin={handleSpinClick} 
+        // onSpin={handleSpinClick} 
       />
     </button>
       
