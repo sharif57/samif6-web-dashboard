@@ -30,7 +30,7 @@ const DashboardHome = () => {
           </div>
           <div className="text-center">
             <h3 className="text-[20px] text-[#FFFFFF]">{"Total users"}</h3>
-            <h3 className=" text-white font-medium text-[48px]">{data?.total_users}</h3>
+            <h3 className=" text-white font-medium text-[48px]">{data?.total_users || 0} </h3>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ const DashboardHome = () => {
           {/* </div> */}
           <div className="text-center">
             <h3 className="text-[20px] text-[#FFFFFF]">{"Total Earnings"}</h3>
-            <h3 className=" text-white font-medium text-[48px]">${earn?.total_earning}</h3>
+            <h3 className=" text-white font-medium text-[48px]">${earn?.total_earning || 0}</h3>
           </div>
         </div>
       </div>

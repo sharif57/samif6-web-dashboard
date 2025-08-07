@@ -1,15 +1,16 @@
 import dashProfile from "../../assets/images/dashboard-profile.png";
 
 import { ArrowLeft, User, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserProfileQuery } from "../../redux/features/userSlice";
 
 export default function MyProfile() {
 
+  const navigate = useNavigate();
 
   const handleBack = () => {
-    console.log("Back button clicked");
     // Add navigation logic here
+    navigate(-1);
   };
   const { data } = useUserProfileQuery();
   console.log("User Profile Data:", data);

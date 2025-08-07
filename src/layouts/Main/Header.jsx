@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Badge } from "antd";
+import { Link, useLocation } from "react-router-dom";
 import profileImage from "../../assets/images/dash-profile.png";
-import { TbBellRinging } from "react-icons/tb";
 import { useUserProfileQuery } from "../../redux/features/userSlice";
 
 const Header = () => {
-  const navigate = useNavigate();
   const loacatin = useLocation();
   const notificationRef = useRef(null);
   const [, setNotificationPopup] = useState(false);
@@ -46,25 +43,7 @@ const Header = () => {
         <p className="text-sm md:text-xl">{"Have a nice day!"}</p>
       </div>
       <div className="flex gap-x-[41px]">
-        <div
-          onClick={() => navigate("/notifications")}
-          className="relative flex items-center "
-        >
-          <Badge
-            style={{
-              backgroundColor: "#000000",
-              width: "20px",
-              height: "20px",
-              objectFit: "contain",
-            }}
-            count={1}
-          >
-            <TbBellRinging
-              style={{ cursor: "pointer" }}
-              className={` w-6 h-6 rounded-full shadow-sm  font-bold transition-all`}
-            />
-          </Badge>
-        </div>
+
         <div className="flex items-center">
           <Link to={'/settings/profile'} >
             <img
