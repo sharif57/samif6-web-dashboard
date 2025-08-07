@@ -82,8 +82,7 @@ const Spanner = () => {
         <SpinAndWin 
         ref={spinRef}
         data={freeSpinGifts}
-        onSpin={handleSpinClick} // If the component supports this prop
-        // onSpinEnd={(winner) => console.log('Winner:', winner)} // If you need to handle the end of spin
+        onSpin={handleSpinClick} 
       />
     </button>
       
