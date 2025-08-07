@@ -61,8 +61,35 @@ export const ticketsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Tickets"],
     }),
+
+    updateTicket: builder.mutation({
+      query: ({body, id}) => ({
+        // api/ticket/admin/update-delete/ticket/8
+        url: `api/ticket/admin/update-delete/ticket/${id}/`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["Tickets"],
+    }),
+
+    deleteTicket: builder.mutation({
+      // api/ticket/admin/update-delete/ticket/8
+      query: (id) => ({
+        url: `api/ticket/admin/update-delete/ticket/${id}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Tickets"],
+    }),
+
+    winnerList: builder.query({
+      query: () => ({
+        url: "api/raffle/admin/winners/",
+        method: "GET",
+      }),
+      providesTags: ["Tickets"],
+    }),
    
   }),
 });
 
-export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery} = ticketsApi;
+export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery} = ticketsApi;

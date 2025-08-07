@@ -1,8 +1,10 @@
-import { useAllUserQuery } from "../../../redux/features/userSlice";
+import { useAllUserQuery, useDashboardQuery } from "../../../redux/features/userSlice";
 import User from "../Shop/User";
 
 const DashboardHome = () => {
   const {data} = useAllUserQuery();
+  const {data:earn} =useDashboardQuery();
+  console.log(earn?.total_earning,'earn')
   return (
     <div className="space-y-[24px]">
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-x-10 lg:gap-x-10  gap-y-10 ">
@@ -57,7 +59,7 @@ const DashboardHome = () => {
           {/* </div> */}
           <div className="text-center">
             <h3 className="text-[20px] text-[#FFFFFF]">{"Total Earnings"}</h3>
-            <h3 className=" text-white font-medium text-[48px]">$89,000</h3>
+            <h3 className=" text-white font-medium text-[48px]">${earn?.total_earning}</h3>
           </div>
         </div>
       </div>

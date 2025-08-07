@@ -11,8 +11,25 @@ export const subscriptionApi  = baseApi.injectEndpoints({
       providesTags: ["Subscription"],
     }),
 
+    createSubscription: builder.mutation({
+      query: (body) => ({
+        url: "api/subscription/admin/subscription/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Subscription"],
+    }),
+
+    singleSubscription: builder.query({
+      query: (id) => ({
+        url: `api/subscription/admin/subscription/${id}/`,
+        method: "GET",
+      }),
+      providesTags: ["Subscription"],
+    }),
+
 
   }),
 });
 
-export const { useAllSubscriptionQuery} = subscriptionApi;
+export const { useAllSubscriptionQuery, useCreateSubscriptionMutation, useSingleSubscriptionQuery} = subscriptionApi;

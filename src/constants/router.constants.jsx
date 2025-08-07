@@ -20,14 +20,15 @@ import Trust from "../pages/Settings/Trust";
 import EditTrust from "../pages/Settings/EditTrust";
 import { TbCash } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
-import { BadgePoundSterling, ShoppingBag } from "lucide-react";
 import AddItem from "../pages/Main/Shop/AddItem";
-import TransactionHome from "../pages/Main/Transaction/TransactionHome";
 import User from "../pages/Main/Shop/User";
 import Subscription from "../pages/Main/Parties/Subscription";
 import Spanner from "../pages/Main/Draw/Spanner";
 import AddProduct from "../pages/Main/SellProduct/AddProduct";
 import TicketCreate from "../pages/Main/Ticket/TicketCreate";
+import EditSubscription from "../pages/Main/Parties/EditSubscription";
+import WinnerList from "../pages/Main/Ticket/WinnerList";
+import {  User2 } from "lucide-react";
 
 export const dashboardItems = [
   {
@@ -39,18 +40,18 @@ export const dashboardItems = [
   {
     name: "User",
     path: "users",
-    icon: ShoppingBag,
+    icon: User2,
     element: <User />,
   },
-  {
-    name: "Earnings",
-    path: "transaction",
-    icon: BadgePoundSterling,
-    element: <TransactionHome />,
-  },
+  // {
+  //   name: "Earnings",
+  //   path: "transaction",
+  //   icon: BadgePoundSterling,
+  //   element: <TransactionHome />,
+  // },
 
   {
-    path: "add-item",
+    path: "subscription/add-item",
     element: <AddItem />,
   },
 
@@ -70,6 +71,10 @@ export const dashboardItems = [
     path: "trust/spanner",
     element: <Spanner />,
   },
+  {
+    path: 'spanner/winner-list',
+    element: <WinnerList/>
+  },
   // {
   //   name: "Sell Product",
   //   path: "sell-product",
@@ -85,6 +90,13 @@ export const dashboardItems = [
     path: "subscription",
     icon: TbCash,
     element: <Subscription />,
+  },
+  {
+    path: "/subscription/edit-item/:id",
+    element: <EditSubscription />,
+    loader: async ({ params }) => {
+      return fetch(`http://localhost:5000/subscription/${params.id}`);
+    }
   },
 
   {

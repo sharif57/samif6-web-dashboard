@@ -17,7 +17,16 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
+
+    dashboard: builder.query({
+      query: () => ({
+        url: "api/auth/dashboard/",
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
+
   }),
 });
 
-export const { useUserProfileQuery , useAllUserQuery} = userApi;
+export const { useUserProfileQuery , useAllUserQuery, useDashboardQuery} = userApi;

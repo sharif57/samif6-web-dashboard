@@ -3,6 +3,7 @@ import SpinAndWin from 'react-spin-game';
 import 'react-spin-game/dist/index.css';
 import { useCollectTicketQuery, useGiveWayIdQuery, useSpinDrawMutation } from '../../../redux/features/ticketSlice';
 import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const generateColors = (count) => {
   const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD', '#534590', '#9B59B6', '#3498DB'];
@@ -10,6 +11,7 @@ const generateColors = (count) => {
 };  
 
 const Spanner = () => {
+  const router = useNavigate()
   const [winner, setWinner] = useState(null);
   // const { data, isLoading, isError } = useSpinTicketQuery();
   const {data: giveWayId, isLoading, isError} = useGiveWayIdQuery()
@@ -26,6 +28,7 @@ const Spanner = () => {
       }).unwrap();
       console.log(res, 'spin draw');
       toast.success(res?.message || 'Spin successful');
+      router('/spanner/winner-list')
       
       
     } catch (error) {
@@ -56,10 +59,14 @@ const Spanner = () => {
   const colors = generateColors(tickets.length);
   const freeSpinGifts = tickets.map((ticket, index) => [ticket, colors[index]]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !tickets?.length) return <div className='text-white text-center'>No tickets available.</div>;
+  if (isLoading) return <div className='text-white text-center'>Loading...</div>;
+  // if (isError || !tickets?.length) return <div className='text-white text-center'>No tickets available.</div>;
 
   return (
+  <div>
+  <Link to={'/spanner/winner-list'} className='flex justify-end'>
+  <button className='text-white bg-[#534590] px-8 rounded-lg py-3 hover:text-gray-300 transition-colors'>Winner List</button>
+  </Link>
     <div className='flex flex-col items-center gap-4'>
       
       <input 
@@ -86,6 +93,7 @@ const Spanner = () => {
       >
         Start Spin
       </button> */}
+    </div>
     </div>
   );
 };

@@ -225,13 +225,12 @@ export default function Subscription() {
             >
               Delete Plan
             </button>
-                <button
-              className={`w-full py-3 text-white rounded-2xl mt-4 transition-colors ${
-                item.is_popular ? "bg-[#534590]" : "bg-[#2a2a2a]"
-              }`}
+                <Link
+              to={`/subscription/edit-item/${item.id}`}
+              className={`w-full py-3 text-white text-center rounded-2xl mt-4 transition-colors bg-[#2a2a2a] `}
             >
               Edit Plan
-            </button>
+            </Link>
         </div>
           </div>
         ))}
@@ -239,7 +238,7 @@ export default function Subscription() {
         {/* Add New Subscription Link */}
         <div className="mt-4">
           <Link
-            to="/add-item"
+            to="/subscription/add-item"
             className="flex items-center px-6 py-3 bg-[#404040] w-[250px] text-white rounded-full transition-colors hover:bg-[#534590]"
           >
             <svg
