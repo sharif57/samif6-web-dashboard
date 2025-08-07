@@ -28,8 +28,17 @@ export const subscriptionApi  = baseApi.injectEndpoints({
       providesTags: ["Subscription"],
     }),
 
+    editSubscription: builder.mutation({
+      // api/subscription/admin/subscription/
+      query: ({body, id}) => ({
+        url: `api/subscription/admin/subscription/${id}/`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["Subscription"],
+    }),
 
   }),
 });
 
-export const { useAllSubscriptionQuery, useCreateSubscriptionMutation, useSingleSubscriptionQuery} = subscriptionApi;
+export const { useAllSubscriptionQuery, useCreateSubscriptionMutation, useSingleSubscriptionQuery , useEditSubscriptionMutation} = subscriptionApi;

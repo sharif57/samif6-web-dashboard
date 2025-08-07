@@ -1,154 +1,10 @@
 
-
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { useCreateSubscriptionMutation } from "../../../redux/features/subscriptionSlice";
-
-// export default function AddItem() {
-
-//   const [createSubscription] =useCreateSubscriptionMutation();
-
-//   const [formData, setFormData] = useState({
-//     packageName: "",
-//     packageAmount: "",
-//     packageDuration: "",
-//     features: "",
-//   });
-
-//   const handleInputChange = (field, value) => {
-//     setFormData((prev) => ({
-//       ...prev,
-//       [field]: value,
-//     }));
-//   };
-
-
-
-//   const handleCreate = () => {
-//     console.log("Creating package:", {
-//       ...formData,
-//     });
-//     // Add your package creation logic here
-//     // You can upload the image to your server/cloud storage
-//     // and save the form data to your database
-//   };
-
-//   const isFormValid = () => {
-//     return (
-//       formData.packageName.trim() !== "" &&
-//       formData.packageAmount.trim() !== "" &&
-//       formData.packageDuration.trim() !== "" &&
-//       formData.features.trim() !== ""
-//     );
-//   };
-
-//   return (
-//     <div className="min-h-screen  p-6">
-//       <div className=" ">
-//         <div className="bg-[#404040] p-4 rounded-lg shadow-sm mb-6 flex items-center">
-//           <Link to="/subscription" className="mr-4 text-white">
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               className="h-5 w-5"
-//               viewBox="0 0 20 20"
-//               fill="currentColor"
-//             >
-//               <path
-//                 fillRule="evenodd"
-//                 d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-//                 clipRule="evenodd"
-//               />
-//             </svg>
-//           </Link>
-//           <h1 className="text-lg font-medium text-white">
-//             Add Subscription
-//           </h1>
-//         </div>
-//       </div>
-//       <div className="w-full max-w-4xl">
-//         <div className="space-y-6">
-//           {/* Top Row - Upload Image and Package Name */}
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    
-//             {/* Package Name */}
-//             <div>
-//               <input
-//                 type="text"
-//                 value={formData.packageName}
-//                 onChange={(e) =>
-//                   handleInputChange("packageName", e.target.value)
-//                 }
-//                 placeholder="Package Name"
-//                 className="w-full h-14 bg-[#404040] text-white rounded-full px-6 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-//               />
-//             </div>
-//           </div>
-
-//           {/* Middle Row - Package Amount and Package Duration */}
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//             {/* Package Amount */}
-//             <div>
-//               <input
-//                 type="text"
-//                 value={formData.packageAmount}
-//                 onChange={(e) =>
-//                   handleInputChange("packageAmount", e.target.value)
-//                 }
-//                 placeholder="Package Amount"
-//                 className="w-full h-14 bg-[#404040] text-white rounded-full px-6 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-//               />
-//             </div>
-
-//             {/* Package Duration */}
-//             <div>
-//               <input
-//                 type="text"
-//                 value={formData.packageDuration}
-//                 onChange={(e) =>
-//                   handleInputChange("packageDuration", e.target.value)
-//                 }
-//                 placeholder="Package Duration"
-//                 className="w-full h-14 bg-[#404040] text-white rounded-full px-6 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-//               />
-//             </div>
-//           </div>
-
-//           {/* Bottom Row - Add Features */}
-//           <div>
-//             <textarea
-//               value={formData.features}
-//               onChange={(e) => handleInputChange("features", e.target.value)}
-//               placeholder="Add Features"
-//               rows={3}
-//               className="w-full bg-[#404040] text-white rounded-3xl px-6 py-4 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none"
-//             />
-//           </div>
-
-//           {/* Create Button */}
-//           <div className="flex justify-center pt-6">
-//             <button
-//               onClick={handleCreate}
-//               disabled={!isFormValid()}
-//               className={`px-12 py-3 rounded-full font-semibold transition-all transform hover:scale-105 ${
-//                 isFormValid()
-//                   ? "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white shadow-lg"
-//                   : "bg-[#534590] text-gray-400 cursor-not-allowed"
-//               }`}
-//             >
-//               Create
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateSubscriptionMutation } from "../../../redux/features/subscriptionSlice";
 
 export default function AddItem() {
-  const [createSubscription, { isLoading, error }] = useCreateSubscriptionMutation();
+  const [createSubscription, { isLoading }] = useCreateSubscriptionMutation();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -272,15 +128,7 @@ export default function AddItem() {
         <div className="space-y-6">
           {/* Top Row - Name and Title */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* <div>
-              <input
-                type="text"
-                value={formData.name}
-                onChange={(e) => handleInputChange("name", e.target.value)}
-                placeholder="Package Name (e.g., vip)"
-                className="w-full h-14 bg-[#404040] text-white rounded-full px-6 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-              />
-            </div> */}
+        
             {/* name seleted use  */}
             <div>
               <select

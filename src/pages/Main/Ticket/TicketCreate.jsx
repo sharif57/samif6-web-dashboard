@@ -231,9 +231,10 @@
 // }
 
 import { useState } from "react";
-import { useCreateCreateMutation, useGivewayTicketQuery, useUpdateTicketMutation } from "../../../redux/features/ticketSlice";
+import { useCreateCreateMutation, useDeleteTicketMutation, useGivewayTicketQuery, useUpdateTicketMutation } from "../../../redux/features/ticketSlice";
 import toast from "react-hot-toast";
 import { SquarePen, Trash, X } from "lucide-react";
+import Swal from "sweetalert2";
 
 export default function TicketCreate() {
   // State for create form
@@ -256,6 +257,41 @@ export default function TicketCreate() {
   const { data, refetch } = useGivewayTicketQuery();
   const tickets = data?.ticket ? [data.ticket] : [];
   const [updateTicket] = useUpdateTicketMutation();
+  const [deleteTicket] =useDeleteTicketMutation();
+
+const handleDelete = async (id) => {
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  });
+
+  if (result.isConfirmed) {
+    try {
+      const res = await deleteTicket(id).unwrap();
+      console.log(res)
+      toast.success(res?.message ||"Ticket deleted successfully!");
+      refetch();
+      window.location.reload();
+      
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your ticket has been deleted.",
+        icon: "success"
+      });
+
+    } catch (error) {
+      console.error("Delete error:", error);
+      toast.error(error?.data?.message || "Failed to delete ticket");
+    }
+  }
+};
+
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -415,7 +451,7 @@ export default function TicketCreate() {
                   <button type="button" onClick={() => openEditModal(ticket)}>
                     <SquarePen className="text-indigo-500 hover:text-indigo-700" />
                   </button>
-                  <button type="button" >
+                  <button onClick={() => handleDelete(ticket.id)} type="button" >
                     <Trash className="text-red " />
                   </button>
                 </td>

@@ -92,4 +92,4 @@ export const ticketsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery} = ticketsApi;
+export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery, useDeleteTicketMutation} = ticketsApi;
