@@ -38,7 +38,15 @@ export const subscriptionApi  = baseApi.injectEndpoints({
       invalidatesTags: ["Subscription"],
     }),
 
+    deleteSubscription: builder.mutation({
+      query: (id) => ({
+        url: `api/subscription/admin/subscription/${id}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Subscription"],
+    }), 
+
   }),
 });
 
-export const { useAllSubscriptionQuery, useCreateSubscriptionMutation, useSingleSubscriptionQuery , useEditSubscriptionMutation} = subscriptionApi;
+export const { useAllSubscriptionQuery, useCreateSubscriptionMutation, useSingleSubscriptionQuery , useEditSubscriptionMutation , useDeleteSubscriptionMutation } = subscriptionApi;

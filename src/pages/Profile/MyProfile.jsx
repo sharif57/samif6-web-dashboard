@@ -47,7 +47,7 @@ export default function MyProfile() {
                 />
               </div>
               <div className="text-center">
-                <h2 className="text-white text-lg font-medium">Sharon</h2>
+                <h2 className="text-white text-lg font-medium">{data?.full_name}</h2>
               </div>
             </div>
 

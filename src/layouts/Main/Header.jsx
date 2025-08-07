@@ -11,8 +11,10 @@ const Header = () => {
   const notificationRef = useRef(null);
   const [, setNotificationPopup] = useState(false);
   const { data } = useUserProfileQuery();
+  console.log(data, "data");
 
    const IMAGE = import.meta.env.VITE_IMAGE_API;
+   console.log(IMAGE);
 
 
   useEffect(() => {

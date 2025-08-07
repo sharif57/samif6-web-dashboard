@@ -26,7 +26,17 @@ export const userApi = baseApi.injectEndpoints({
       providesTags: ["User"],
     }),
 
+    // updateProfile fromdata
+    updateProfile: builder.mutation({
+      query: (body) => ({
+        url: "api/auth/update-profile/",
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
   }),
 });
 
-export const { useUserProfileQuery , useAllUserQuery, useDashboardQuery} = userApi;
+export const { useUserProfileQuery , useAllUserQuery, useDashboardQuery , useUpdateProfileMutation} = userApi;
