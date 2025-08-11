@@ -1,14 +1,50 @@
-import { useWinnerListQuery } from "../../../redux/features/ticketSlice";
+import Swal from "sweetalert2";
+import { useAllWinnerDeleteMutation, useWinnerListQuery } from "../../../redux/features/ticketSlice";
 
 export default function WinnerList() {
   const { data, isLoading } = useWinnerListQuery();
   console.log(data, 'winner list');
+  const [allWinnerDelete] =useAllWinnerDeleteMutation()
 
   if(isLoading) return <div className="text-white text-center">Loading...</div>;
 
+  // swal use 
+const handleDelete = async () => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await allWinnerDelete(); // Await the API call
+        Swal.fire(
+          'Deleted!',
+          res?.data?.message || 'Item deleted successfully.',
+          'success'
+        );
+      } catch (error) {
+        Swal.fire(
+          'Error!',
+          error?.message || 'Something went wrong while deleting.',
+          'error'
+        );
+      }
+    }
+  });
+};
+
+
   return (
     <div className="min-h-screen  p-6">
-      <h1 className="text-3xl font-bold text-white mb-6 text-center">Winner List</h1>
+    <div className="mb-8 flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-white mb-6 text-center">Winner List</h1>
+      <button onClick={() => handleDelete()} className="bg-red hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">All Winner Delete</button>
+    </div>
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto text-white bg-gray-800 rounded-lg shadow-lg">
           <thead>

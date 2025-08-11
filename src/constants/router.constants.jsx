@@ -29,6 +29,7 @@ import TicketCreate from "../pages/Main/Ticket/TicketCreate";
 import EditSubscription from "../pages/Main/Parties/EditSubscription";
 import WinnerList from "../pages/Main/Ticket/WinnerList";
 import {  User2 } from "lucide-react";
+import CollectTicket from "../pages/Main/Draw/CollectTicket";
 
 export const dashboardItems = [
   {
@@ -60,6 +61,10 @@ export const dashboardItems = [
     path: "spanner",
     icon: MdOutlineSecurityUpdateWarning,
     element: <Spanner />,
+  },
+  {
+    path: 'spanner/collect-ticket',
+    element: <CollectTicket />
   },
   {
     name: 'Create Ticket',

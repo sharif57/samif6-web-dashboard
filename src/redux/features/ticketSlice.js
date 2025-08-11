@@ -88,8 +88,16 @@ export const ticketsApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Tickets"],
     }),
+
+    allWinnerDelete: builder.mutation({
+      query: () => ({
+        url: "api/raffle/admin/winners/delete_all/",
+        method: "DELETE",
+      }),
+      providesTags: ["Tickets"],
+    }),
    
   }),
 });
 
-export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery, useDeleteTicketMutation} = ticketsApi;
+export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery, useDeleteTicketMutation, useAllWinnerDeleteMutation } = ticketsApi;
