@@ -96,8 +96,16 @@ export const ticketsApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Tickets"],
     }),
+
+    allWinnerHistory: builder.query({
+      query: () => ({
+        url: "api/raffle/admin/winners/archived/list/",
+        method: "GET",
+      }),
+      providesTags: ["Tickets"],
+    }),
    
   }),
 });
 
-export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery, useDeleteTicketMutation, useAllWinnerDeleteMutation } = ticketsApi;
+export const { useAllTicketsPurchasesQuery , useCreateCreateMutation, useGivewayTicketQuery, useSpinTicketQuery, useSpinDrawMutation, useGiveWayIdQuery, useCollectTicketQuery , useUpdateTicketMutation , useWinnerListQuery, useDeleteTicketMutation, useAllWinnerDeleteMutation, useAllWinnerHistoryQuery } = ticketsApi;

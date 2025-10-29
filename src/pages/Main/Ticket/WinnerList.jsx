@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { useAllWinnerDeleteMutation, useWinnerListQuery } from "../../../redux/features/ticketSlice";
+import { Link } from "react-router-dom";
 
 export default function WinnerList() {
   const { data, isLoading } = useWinnerListQuery();
@@ -43,7 +44,10 @@ const handleDelete = async () => {
     <div className="min-h-screen  p-6">
     <div className="mb-8 flex justify-between items-center">
         <h1 className="text-3xl font-bold text-white mb-6 text-center">Winner List</h1>
+     <div className="flex items-center gap-6">
+       <Link to={'/spanner/winner-history'}><button  className="bg-[#534590]  text-white font-semibold py-2 px-4 rounded">All Winner History</button></Link>
       <button onClick={() => handleDelete()} className="bg-red hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">All Winner Delete</button>
+     </div>
     </div>
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto text-white bg-gray-800 rounded-lg shadow-lg">

@@ -410,7 +410,7 @@ export default function Spanner() {
         });
 
         // Redirect to /spanner/collect-ticket
-        router("/spanner/collect-ticket");
+        window.location.href =("/spanner/collect-ticket");
       } catch (error) {
         // Show error message for unexpected issues
         await Swal.fire({

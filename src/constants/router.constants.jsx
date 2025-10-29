@@ -30,6 +30,7 @@ import EditSubscription from "../pages/Main/Parties/EditSubscription";
 import WinnerList from "../pages/Main/Ticket/WinnerList";
 import {  User2 } from "lucide-react";
 import CollectTicket from "../pages/Main/Draw/CollectTicket";
+import WinnerHistory from "../pages/Main/Ticket/WinnerHistory";
 
 export const dashboardItems = [
   {
@@ -80,12 +81,10 @@ export const dashboardItems = [
     path: 'spanner/winner-list',
     element: <WinnerList/>
   },
-  // {
-  //   name: "Sell Product",
-  //   path: "sell-product",
-  //   icon: ShoppingBag,
-  //   element: <SellProduct />,
-  // },
+  {
+    path: "spanner/winner-history",
+    element: <WinnerHistory />,
+  },
   {
     path:'sell-product/add-product',
     element:<AddProduct/>
